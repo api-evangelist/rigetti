@@ -1,0 +1,144 @@
+executed: '2026-05-25T00:00:00.000Z'
+results:
+  - code: apis-json-specification-aid-info
+    message: There is an aid.
+    path:
+      - aid
+    severity: 2
+  - code: apis-json-url-info
+    message: There is a URL.
+    path:
+      - url
+    severity: 2
+  - code: apis-json-apis-info
+    message: Has APIs.
+    path:
+      - apis
+    severity: 2
+  - code: apis-json-apis-aid-info
+    message: API has an aid property.
+    path:
+      - apis
+      - '0'
+      - aid
+    severity: 2
+  - code: apis-json-apis-name-info
+    message: Has a Name
+    path:
+      - apis
+      - '0'
+      - name
+    severity: 2
+  - code: apis-json-apis-tags-info
+    message: API has a Tags object.
+    path:
+      - apis
+      - '0'
+      - tags
+    severity: 2
+  - code: apis-json-apis-humanURL-info
+    message: Has a Human URL.
+    path:
+      - apis
+      - '0'
+      - humanURL
+    severity: 2
+  - code: apis-json-apis-baseURL-info
+    message: Has a Base URL.
+    path:
+      - apis
+      - '0'
+      - baseURL
+    severity: 2
+  - code: apis-json-apis-properties-documentation-info
+    message: Has Documentation.
+    path:
+      - apis
+      - '0'
+      - properties
+      - '0'
+      - type
+    severity: 2
+  - code: apis-json-apis-properties-openapi-info
+    message: Has OpenAPI.
+    path:
+      - apis
+      - '0'
+      - properties
+    severity: 2
+  - code: apis-json-apis-properties-jsonschema-info
+    message: Has JSON Schema.
+    path:
+      - apis
+      - '0'
+      - properties
+    severity: 2
+  - code: apis-json-apis-properties-naftikocapability-info
+    message: Has Naftiko Capability references.
+    path:
+      - apis
+      - '0'
+      - properties
+    severity: 2
+  - code: apis-json-apis-description-info
+    message: Has a Description.
+    path:
+      - apis
+      - '0'
+      - description
+    severity: 2
+  - code: apis-json-name-info
+    message: There is a name.
+    path:
+      - name
+    severity: 2
+  - code: apis-json-tags-info
+    message: There is a Tags object.
+    path:
+      - tags
+    severity: 2
+  - code: apis-json-specification-type-info
+    message: There is a specification type.
+    path:
+      - kind
+    severity: 2
+  - code: apis-json-image-info
+    message: There is an image.
+    path:
+      - image
+    severity: 2
+  - code: apis-json-common-info
+    message: There is a common property.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-plans-info
+    message: References a plans/pricing artifact.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-ratelimits-info
+    message: References a rate-limits artifact.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-common-finops-info
+    message: References a FinOps artifact.
+    path:
+      - common
+    severity: 2
+  - code: apis-json-created-info
+    message: There is a created date.
+    path:
+      - created
+    severity: 2
+  - code: apis-json-modified-info
+    message: There is a modified date.
+    path:
+      - modified
+    severity: 2
+  - code: apis-json-description-info
+    message: There is a description.
+    path:
+      - description
+    severity: 2

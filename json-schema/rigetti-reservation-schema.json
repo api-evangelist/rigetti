@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/rigetti/main/json-schema/rigetti-reservation-schema.json",
+  "title": "Rigetti QCS Reservation",
+  "description": "A time-boxed exclusive access window to a Rigetti quantum processor (QPU) granted to a user or group. Derived from the Rigetti QCS HTTP API reservation surface.",
+  "type": "object",
+  "required": ["id", "quantumProcessorId", "startTime", "endTime"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the reservation."
+    },
+    "quantumProcessorId": {
+      "type": "string",
+      "description": "The QPU this reservation is scoped to (e.g. Aspen-M-3, Ankaa-2, Cepheus-1-108Q)."
+    },
+    "userId": {
+      "type": "string",
+      "description": "QCS user that owns the reservation. Mutually exclusive with groupName at the API level (one or the other)."
+    },
+    "groupName": {
+      "type": "string",
+      "description": "QCS group the reservation is billed against, if group-scoped."
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 start time."
+    },
+    "endTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 end time."
+    },
+    "duration": {
+      "type": "string",
+      "description": "Duration of the reservation (e.g. PT30M). Computed server-side from start/end."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "active", "cancelled", "completed"],
+      "description": "Reservation lifecycle status."
+    },
+    "createdTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "price": {
+      "type": "object",
+      "description": "Reservation price reference; populated against the user/group's contract pricing.",
+      "properties": {
+        "currency": { "type": "string", "default": "USD" },
+        "amount": { "type": "string", "description": "Decimal price as string." }
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,138 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Rigetti Computing
+providerId: rigetti
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: false
+tags:
+  - Quantum Computing
+  - QCS
+  - Reservations
+  - QPU
+description: Rigetti Quantum Cloud Services (QCS) commercial offering. Public price points are not posted on the
+  Rigetti website at the catalog-line level — pricing is quoted per project, per reservation, or per partner
+  agreement. The plans below capture the visible commercial surfaces (QCS reservations, Novera on-prem QPU,
+  Quantum Foundry Services, and third-party indirect access via AWS Braket / Azure Quantum).
+sources:
+  - https://www.rigetti.com/qcs
+  - https://www.rigetti.com/novera
+  - https://www.rigetti.com/foundry
+  - https://docs.api.qcs.rigetti.com/
+plans:
+  - id: qcs-reservation
+    name: QCS Reservation Access
+    type: usage-based
+    description: Time-boxed exclusive access to a Rigetti QPU via the QCS Reservations API. Reservations are
+      billed against a QCS group or user account; pricing is contract-driven and not posted publicly. The QCS
+      API exposes balance, invoice, invoice-line, and upcoming-invoice resources to track consumption.
+    entries:
+      - label: Reservation
+        name: reservation
+        type: metered
+        metric: reservation
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: contact
+        userMultiplied: false
+        description: Per-reservation pricing — quoted via contract.
+  - id: qcs-onboarding
+    name: QCS Onboarding
+    type: contact
+    description: Initial QCS account creation and onboarding through https://www.rigetti.com/get-quantum.
+      Access requires account approval; once approved, the user can download a 24-hour OAuth2 access token from
+      https://qcs.rigetti.com/auth/token.
+    entries:
+      - label: Account
+        name: account
+        type: metered
+        metric: user
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: contact
+        userMultiplied: false
+  - id: novera-qpu
+    name: Novera QPU (On-Premises)
+    type: capex
+    description: Rigetti's 9-qubit superconducting QPU sold as on-premises hardware with dilution refrigerator
+      requirements. Targeted at national labs, universities, and corporate R&D buyers. Capital purchase plus
+      service agreement; pricing quoted per customer.
+    entries:
+      - label: Novera QPU System
+        name: novera-system
+        type: capex
+        metric: system
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: contact
+        userMultiplied: false
+  - id: quantum-foundry-services
+    name: Quantum Foundry Services
+    type: contact
+    description: Custom quantum hardware development, fabrication, and co-design engagements at Rigetti's Fab-1
+      facility in Fremont, CA. Includes Phasecraft, Oxford Instruments, and government / academic partner
+      programs.
+    entries:
+      - label: Engagement
+        name: engagement
+        type: metered
+        metric: project
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: contact
+        userMultiplied: false
+  - id: aws-braket-rigetti
+    name: AWS Braket — Rigetti device
+    type: usage-based
+    description: Indirect QCS access via AWS Braket — Rigetti QPUs are exposed as third-party Braket devices.
+      Pricing follows Braket's per-task + per-shot model (see Braket pricing for the active Rigetti device
+      family). Customers pay AWS rather than Rigetti directly.
+    entries:
+      - label: Task
+        name: task
+        type: metered
+        metric: task
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: contact
+        description: Per Braket pricing for Rigetti devices.
+      - label: Shot
+        name: shot
+        type: metered
+        metric: shot
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: contact
+  - id: azure-quantum-rigetti
+    name: Microsoft Azure Quantum — Rigetti provider
+    type: usage-based
+    description: Indirect QCS access via Microsoft Azure Quantum — Rigetti is exposed as an Azure Quantum
+      provider. Pricing follows the Azure Quantum plan attached to the customer's Azure subscription. Customers
+      pay Microsoft.
+    entries:
+      - label: QPU usage
+        name: qpu-usage
+        type: metered
+        metric: minute
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: contact
+notes: |
+  Rigetti does not publish a public per-shot or per-second QPU price card on rigetti.com as of May 2026.
+  Commercial reservations are sold per-engagement and tracked via the QCS billing API's invoice and balance
+  endpoints. Free credits and academic access are extended via the "Get Quantum" application process.

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/rigetti/main/json-schema/rigetti-quantum-processor-schema.json",
+  "title": "Rigetti Quantum Processor",
+  "description": "A Rigetti superconducting QPU exposed through Quantum Cloud Services. Includes identity, ISA reference, and lifecycle metadata.",
+  "type": "object",
+  "required": ["id", "name"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable identifier for the quantum processor (e.g. 'Cepheus-1-108Q')."
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the QPU."
+    },
+    "qubitCount": {
+      "type": "integer",
+      "description": "Number of physical qubits on the processor."
+    },
+    "topology": {
+      "type": "string",
+      "description": "Lattice topology family (e.g. square, octagonal, tunable-coupler)."
+    },
+    "technology": {
+      "type": "string",
+      "description": "Underlying qubit technology — superconducting transmon for Rigetti.",
+      "default": "superconducting transmon"
+    },
+    "fidelities": {
+      "type": "object",
+      "properties": {
+        "singleQubitGate": { "type": "number", "description": "Median 1Q gate fidelity (0-1)." },
+        "twoQubitGate": { "type": "number", "description": "Median 2Q (CZ) gate fidelity (0-1)." },
+        "readout": { "type": "number", "description": "Median readout fidelity (0-1)." }
+      }
+    },
+    "coherence": {
+      "type": "object",
+      "properties": {
+        "t1Microseconds": { "type": "number", "description": "Median T1 lifetime in microseconds." },
+        "t2Microseconds": { "type": "number", "description": "Median T2 lifetime in microseconds." }
+      }
+    },
+    "isaUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Link to the Instruction Set Architecture document for this processor."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["operational", "maintenance", "deprecated", "decommissioned"]
+    },
+    "deployedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the QPU was deployed for QCS access."
+    }
+  },
+  "additionalProperties": true
+}

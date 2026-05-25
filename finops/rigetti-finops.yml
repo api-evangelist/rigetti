@@ -1,0 +1,96 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Rigetti Computing
+providerId: rigetti
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: false
+tags:
+  - FinOps
+  - Cost Management
+  - FOCUS
+  - Quantum Computing
+  - QCS
+description: FOCUS-aligned FinOps definition for Rigetti Quantum Cloud Services (QCS). Rigetti's billing surface
+  is metered through QCS-managed invoices and account balances exposed by the QCS HTTP API, with reservation
+  duration as the primary cost driver. Indirect consumption via AWS Braket or Microsoft Azure Quantum is
+  attributed to those marketplaces in the customer's FOCUS dataset.
+sources:
+  - https://docs.api.qcs.rigetti.com/
+  - https://www.rigetti.com/qcs
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Rigetti Computing
+serviceCategory: Compute - Quantum
+billingModel:
+  pricingCategory: Reservation + Usage
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  primaryUnit: reservation-minute
+  secondaryUnits:
+    - shot
+    - job
+    - engagement
+focusColumns:
+  ServiceName: Rigetti Quantum Cloud Services
+  ServiceCategory: Compute - Quantum
+  ProviderName: Rigetti Computing
+  PublisherName: Rigetti Computing
+  InvoiceIssuerName: Rigetti Computing
+  PricingCategory: Reservation
+  PricingUnit: reservation-minute
+  BillingCurrency: USD
+meters:
+  - name: reservation_minutes
+    unit: minute
+    aggregation: sum
+    dimensions:
+      - quantumProcessorId
+      - groupName
+      - userId
+      - reservationId
+  - name: shots_submitted
+    unit: shot
+    aggregation: sum
+    dimensions:
+      - quantumProcessorId
+      - endpointId
+      - engagementId
+      - jobId
+  - name: jobs_executed
+    unit: job
+    aggregation: count
+    dimensions:
+      - quantumProcessorId
+      - endpointId
+      - engagementId
+costAttribution:
+  - dimension: group
+    source: /v1/groups/{groupName}/billingInvoices
+  - dimension: user
+    source: /v1/users/{userId}/billingInvoices
+  - dimension: reservation
+    source: /v1/reservations and invoice line items
+indirectBilling:
+  - channel: AWS Braket
+    payer: Amazon Web Services
+    notes: Cost lands on the customer's AWS bill under the Braket service.
+  - channel: Microsoft Azure Quantum
+    payer: Microsoft Azure
+    notes: Cost lands on the customer's Azure invoice under the Quantum service.
+notes: |
+  Rigetti QCS exposes both balance and invoice resources at user and group scope. Balance retrieval supports
+  pre-billing visibility, and the listUpcomingLines / getUpcoming operations provide near-real-time accrual
+  data suitable for FinOps reporting pipelines. Public USD per-minute pricing is not posted; reconcile against
+  contract pricing per group.

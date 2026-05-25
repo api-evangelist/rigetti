@@ -1,0 +1,101 @@
+vocabulary: Rigetti Computing
+providerId: rigetti
+created: '2026-05-25'
+modified: '2026-05-25'
+description: Domain vocabulary covering Rigetti Computing's superconducting quantum computing stack — Quantum
+  Cloud Services (QCS), the Quil instruction language, qcs-sdk client family, and Rigetti's hardware product line.
+sources:
+  - https://docs.rigetti.com/qcs/
+  - https://docs.api.qcs.rigetti.com/
+  - https://github.com/quil-lang/quil
+  - https://www.rigetti.com/
+terms:
+  - term: QCS
+    fullName: Quantum Cloud Services
+    definition: Rigetti's cloud platform for accessing quantum processors. Comprises an OpenAPI 3.0 HTTP API
+      (api.qcs.rigetti.com) for management and a gRPC API (translation + controller services) for execution.
+  - term: QPU
+    fullName: Quantum Processing Unit
+    definition: A physical superconducting quantum processor at Rigetti — e.g. Aspen-M, Ankaa, Cepheus-1-108Q.
+  - term: Quil
+    fullName: Quantum Instruction Language
+    definition: Rigetti's open low-level instruction language for hybrid quantum-classical programs. Stewarded
+      under quil-lang.
+  - term: pyQuil
+    definition: Python library for programming quantum computers using Quil. Compiles via quilc and simulates
+      via QVM; submits jobs to a QPU via qcs-sdk.
+  - term: quilc
+    fullName: Quil Compiler
+    definition: Compiler that lowers high-level Quil programs to a QPU's native gate set per the target ISA.
+  - term: QVM
+    fullName: Quantum Virtual Machine
+    definition: Local classical simulator for Quil programs. Used for testing and small-scale simulation.
+  - term: ISA
+    fullName: Instruction Set Architecture
+    definition: The native gate set and connectivity description for a QPU. Retrieved via GET
+      /v1/quantumProcessors/{id}/instructionSetArchitecture.
+  - term: Engagement
+    definition: A short-lived access credential scoped to a single QPU endpoint, created via POST
+      /v1/engagements. Used as the bearer for gRPC Controller calls.
+  - term: Endpoint
+    definition: A QCS-managed network address that fronts a Controller service for a specific QPU. Listed,
+      created, deleted, and restarted via /v1/endpoints.
+  - term: Reservation
+    definition: A time-boxed exclusive access window to a QPU. Created and managed via /v1/reservations.
+  - term: Controller Job
+    definition: An encrypted, ISA-compiled artifact produced by the Translation service and executed on a QPU
+      by the Controller service.
+  - term: Translation Service
+    definition: gRPC service that converts a native Quil program into an encrypted Controller Job for a target
+      QPU.
+  - term: Controller Service
+    definition: gRPC service that executes Controller Jobs on a QPU endpoint and returns measurement results.
+  - term: QIR
+    fullName: Quantum Intermediate Representation
+    definition: An LLVM-based IR for quantum programs supported by Rigetti via qcs-sdk-qir.
+  - term: Novera QPU
+    definition: Rigetti's 9-qubit on-premises superconducting QPU product.
+  - term: Cepheus-1-108Q
+    definition: Rigetti's 107-qubit superconducting QPU, deployed April 2026; 99.84% 1Q fidelity and 98.77% 2Q
+      CZ fidelity at the time of deployment.
+  - term: Forest
+    definition: Rigetti's legacy quantum programming environment (pyQuil + grove + forest-benchmarking + QVM +
+      quilc). Largely subsumed by qcs-sdk and pyQuil 4.x.
+  - term: Foundry Services
+    definition: Rigetti's custom QPU development and partner program, operated out of the Fab-1 facility in
+      Fremont, CA.
+  - term: Quantum Foundry
+    definition: Rigetti's in-house chip fabrication facility (Fab-1) in Fremont, California.
+classifications:
+  - name: Authentication
+    members:
+      - OAuth2 access token (Okta)
+      - JWT Bearer
+      - Engagement token (gRPC)
+  - name: Surfaces
+    members:
+      - QCS HTTP API
+      - QCS Translation gRPC
+      - QCS Controller gRPC
+      - pyQuil
+      - qcs-sdk-rust
+      - qcs-sdk-python
+      - qcs-sdk-c
+      - qcs-cli
+  - name: Resources
+    members:
+      - Quantum Processor
+      - Endpoint
+      - Engagement
+      - Reservation
+      - Controller Job
+      - Billing Invoice
+      - Billing Customer
+      - Group
+      - User
+  - name: Indirect channels
+    members:
+      - AWS Braket
+      - Microsoft Azure Quantum
+      - Google Cirq Rigetti module
+      - Qiskit (qiskit-rigetti provider)

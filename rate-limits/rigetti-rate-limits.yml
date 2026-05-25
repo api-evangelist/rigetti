@@ -1,0 +1,63 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Rigetti Computing
+providerId: rigetti
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: false
+tags:
+  - Quantum Computing
+  - QCS
+  - Rate Limiting
+  - QPU
+description: Documented rate-limit and concurrency policies for the Rigetti QCS API surface. Rigetti does not
+  publish a public per-second request budget for the QCS HTTP API; the operational rate-limiting comes from (1)
+  reservation-based time-boxed exclusive QPU access, and (2) engagement scope on the gRPC Controller service.
+  The HTTP API does enforce standard HTTP throttling responses (429) with a Retry-After header on abuse.
+sources:
+  - https://docs.api.qcs.rigetti.com/
+  - https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+  - https://docs.rigetti.com/qcs/troubleshooting
+headers:
+  retryAfter: retry-after
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+algorithm: per-reservation-time-slice
+limits:
+  - tier: All QCS users
+    surface: HTTP API (api.qcs.rigetti.com)
+    rpm: not-documented
+    notes: Account, billing, reservations, endpoints, and quantum-processor metadata endpoints. Token is valid
+      24 hours after issuance; abusive callers receive 429 with retry-after.
+  - tier: All QCS users
+    surface: gRPC Controller service
+    rpm: bounded-by-engagement
+    notes: Execution is gated by engagement scope and QPU duty cycle. Only the active reservation holder can
+      submit Controller jobs to a quantum-processor endpoint. BatchExecuteControllerJobs is the preferred
+      high-throughput surface.
+  - tier: All QCS users
+    surface: gRPC Translation service
+    rpm: not-documented
+    notes: Quil-to-Controller-Job translation; pre-execution step. No documented public RPM.
+quotas:
+  - name: Reservation duration
+    description: Reservations are billed for their duration regardless of utilization. Reservations are scoped
+      to a specific quantumProcessorId.
+    metric: minute
+    enforcement: hard
+  - name: Engagement TTL
+    description: Engagements (gRPC access tokens) are short-lived and scoped to one endpoint; clients re-create
+      them as needed.
+    metric: token
+    enforcement: hard
+  - name: Access token TTL
+    description: OAuth2 access tokens issued by Okta are valid 24 hours from issuance.
+    metric: token
+    enforcement: hard
+notes: |
+  Public QCS rate limits are not enumerated in the OpenAPI spec. Effective throughput on a Rigetti QPU is
+  controlled by the reservation calendar (see /v1/quantumProcessors/{id}/calendar) and the engagement
+  authorization mechanism rather than per-second request budgets. Indirect users via AWS Braket and Azure
+  Quantum inherit those platforms' published rate limits.

@@ -1,0 +1,311 @@
+aid: rigetti
+url: https://raw.githubusercontent.com/api-evangelist/rigetti/refs/heads/main/apis.yml
+apis:
+- aid: rigetti:rigetti-qcs-api
+  name: Rigetti QCS API
+  tags:
+  - Quantum Computing
+  - Quantum Cloud Services
+  - QCS
+  - Account Management
+  - QPU Access
+  - Reservations
+  - Billing
+  humanURL: https://docs.api.qcs.rigetti.com/
+  baseURL: https://api.qcs.rigetti.com
+  properties:
+  - url: https://docs.api.qcs.rigetti.com/
+    type: Documentation
+  - url: https://docs.rigetti.com/qcs/references/qcs-api
+    type: Documentation
+  - url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+    type: Documentation
+  - url: openapi/rigetti-qcs-api-openapi.yml
+    type: OpenAPI
+  - url: json-schema/rigetti-quantum-processor-schema.json
+    type: JSONSchema
+  - url: json-schema/rigetti-reservation-schema.json
+    type: JSONSchema
+  - url: json-ld/rigetti-context.jsonld
+    type: JSONLD
+  - url: https://github.com/rigetti/qcs-api-client-rust
+    type: SDK
+    name: Rust API Client
+  - url: https://github.com/rigetti/qcs-api-client-python
+    type: SDK
+    name: Python API Client
+  - type: NaftikoCapability
+    url: capabilities/qcs-quantum-processors.yaml
+  - type: NaftikoCapability
+    url: capabilities/qcs-reservations.yaml
+  - type: NaftikoCapability
+    url: capabilities/qcs-endpoints-engagements.yaml
+  - type: NaftikoCapability
+    url: capabilities/qcs-billing.yaml
+  description: The Rigetti Quantum Cloud Services (QCS) HTTP API is the OpenAPI-specified REST surface for managing
+    accounts, groups, users, billing, reservations, endpoints, engagements, and discovering quantum processor
+    metadata including Instruction Set Architecture (ISA) and calibration. Authentication is OAuth2 (JWT bearer)
+    issued via Okta. The API follows Google API Improvement Proposals (AIP) and is paired with a gRPC API for
+    quantum program translation and controller execution against the QPU.
+- aid: rigetti:rigetti-qcs-translation-service
+  name: Rigetti QCS Translation Service (gRPC)
+  tags:
+  - Quantum Computing
+  - QCS
+  - Translation
+  - Compilation
+  - Quil
+  - gRPC
+  humanURL: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+  properties:
+  - url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+    type: Documentation
+  - url: https://github.com/rigetti/qcs-api-client-rust/tree/main/qcs-api-client-grpc/proto/translation
+    type: ProtocolBuffers
+    name: Translation service proto definitions
+  - url: https://github.com/rigetti/qcs-api-client-rust
+    type: SDK
+  description: gRPC Translation service that compiles native Quil programs into encrypted Controller Jobs for
+    execution on a Rigetti QPU. Operations include TranslateQuilToEncryptedControllerJob and
+    GetQuantumProcessorQuilCalibrationProgram. Authenticated with the same JWT bearer token used by the QCS HTTP
+    API and consumed via qcs-sdk-rust/qcs-sdk-python or the Rust qcs-api-client-grpc crate.
+- aid: rigetti:rigetti-qcs-controller-service
+  name: Rigetti QCS Controller Service (gRPC)
+  tags:
+  - Quantum Computing
+  - QCS
+  - Execution
+  - Controller
+  - Jobs
+  - gRPC
+  humanURL: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+  properties:
+  - url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+    type: Documentation
+  - url: https://github.com/rigetti/qcs-api-client-rust/tree/main/qcs-api-client-grpc/proto/controller
+    type: ProtocolBuffers
+    name: Controller service proto definitions
+  - url: https://github.com/rigetti/qcs-api-client-rust
+    type: SDK
+  description: gRPC Controller service that executes encrypted Controller Jobs on a Rigetti QPU endpoint and
+    returns measurement (readout) results. Operations include ExecuteControllerJob, BatchExecuteControllerJobs,
+    GetControllerJobResults, CancelControllerJobs, and GetControllerJobStatus. Used through qcs-sdk-rust /
+    qcs-sdk-python after obtaining a CreateEngagement token from the QCS HTTP API.
+name: Rigetti Computing
+description: Rigetti Computing (Nasdaq, RGTI) is a Berkeley, California-based quantum computing company building
+  superconducting quantum processors and the full-stack software needed to program and operate them. Founded in
+  2013 by Chad Rigetti, the company designs, manufactures, and operates multi-chip superconducting QPUs at its
+  Fab-1 in Fremont, CA and offers cloud-based access through Quantum Cloud Services (QCS). Rigetti also sells the
+  Novera QPU (9-qubit) for on-premises customers and provides Quantum Foundry Services for custom development.
+  The current generation system Cepheus-1-108Q (107 qubits, deployed April 2026) is accessed via a hybrid REST +
+  gRPC API surface, programmed using the open Quil instruction language, the pyQuil Python library, and the
+  multi-language qcs-sdk (Rust core with Python bindings). Rigetti's hardware is also available indirectly
+  through AWS Braket, Microsoft Azure Quantum, and as a Qiskit provider via qiskit-rigetti.
+tags:
+- Quantum Computing
+- Superconducting Qubits
+- Quantum Cloud Services
+- QCS
+- QPU
+- Quil
+- pyQuil
+- NISQ
+- Fault-Tolerant Quantum Computing
+- Quantum-Classical Hybrid
+- Public Company
+kind: contract
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+access: 3rd-Party
+common:
+- type: Portal
+  url: https://www.rigetti.com
+- type: SignUp
+  url: https://qcs.rigetti.com/
+  name: Quantum Cloud Services Sign-in
+- type: Documentation
+  url: https://docs.rigetti.com/qcs
+  name: QCS Documentation
+- type: GettingStarted
+  url: https://docs.rigetti.com/qcs/getting-started/installation-and-setup
+  name: Installation and Setup
+- type: Documentation
+  url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+  name: The Rigetti QCS API Guide
+- type: Documentation
+  url: https://docs.api.qcs.rigetti.com/
+  name: QCS HTTP API Reference (OpenAPI)
+- type: Authentication
+  url: https://qcs.rigetti.com/auth/token
+  name: QCS Access Token download
+- type: Pricing
+  url: https://www.rigetti.com/qcs
+  name: Quantum Cloud Services
+- type: Pricing
+  url: https://www.rigetti.com/novera
+  name: Novera QPU (on-prem)
+- type: Pricing
+  url: https://www.rigetti.com/foundry
+  name: Quantum Foundry Services
+- type: Support
+  url: mailto:support@rigetti.com
+  name: QCS Support
+- type: Support
+  url: https://rigetti.zendesk.com
+  name: Zendesk Support Portal
+- type: StatusPage
+  url: https://docs.rigetti.com/qcs/troubleshooting
+  name: Troubleshooting
+- type: Blog
+  url: https://www.rigetti.com/blog
+- type: Press
+  url: https://investors.rigetti.com/news-events/news-releases
+  name: Investor News Releases
+- type: GitHubOrganization
+  url: https://github.com/rigetti
+  name: rigetti on GitHub
+- type: SDK
+  url: https://github.com/rigetti/pyquil
+  name: pyQuil — Python library for Quil
+- type: SDK
+  url: https://github.com/rigetti/qcs-sdk-rust
+  name: qcs-sdk-rust — Rust SDK for QCS
+- type: SDK
+  url: https://github.com/rigetti/qcs-sdk-rust/tree/main/crates/python
+  name: qcs-sdk-python — Python bindings to qcs-sdk-rust
+- type: SDK
+  url: https://github.com/rigetti/qcs-sdk-c
+  name: qcs-sdk-c — C SDK for QCS
+- type: SDK
+  url: https://github.com/rigetti/qcs-api-client-rust
+  name: qcs-api-client-rust — REST + gRPC clients
+- type: SDK
+  url: https://github.com/rigetti/qcs-api-client-python
+  name: qcs-api-client-python — Python REST API client
+- type: SDK
+  url: https://github.com/rigetti/quil-rs
+  name: quil-rs — Quil parser and program builder
+- type: SDK
+  url: https://github.com/rigetti/qiskit-rigetti
+  name: qiskit-rigetti — Qiskit provider
+- type: SDK
+  url: https://github.com/rigetti/pyquil-for-azure-quantum
+  name: pyquil-for-azure-quantum
+- type: SDK
+  url: https://github.com/rigetti/qcs-sdk-qir
+  name: qcs-sdk-qir — Quantum Intermediate Representation compiler
+- type: Tool
+  url: https://github.com/rigetti/qcs-cli
+  name: qcs-cli — Quantum Cloud Services CLI
+- type: Tool
+  url: https://github.com/rigetti/quilc
+  name: quilc — Quil compiler
+- type: Tool
+  url: https://github.com/rigetti/qvm
+  name: qvm — Quantum Virtual Machine
+- type: Tool
+  url: https://github.com/rigetti/rpcq
+  name: rpcq — RPC framework for QCS
+- type: Tool
+  url: https://github.com/rigetti/rigetti-resource-estimation
+  name: Rigetti Resource Estimation (RRE)
+- type: CodeExamples
+  url: https://github.com/rigetti/forest-tutorials
+  name: Forest tutorials notebooks
+- type: CodeExamples
+  url: https://github.com/rigetti/grove
+  name: grove — Quantum algorithms with pyQuil
+- type: CodeExamples
+  url: https://github.com/rigetti/forest-benchmarking
+  name: Forest benchmarking
+- type: CodeExamples
+  url: https://github.com/rigetti/qcs-paper
+  name: QCS paper supplementary notebooks
+- type: Integrations
+  url: https://aws.amazon.com/braket/
+  name: AWS Braket (Rigetti as third-party device)
+- type: Integrations
+  url: https://azure.microsoft.com/en-us/products/quantum
+  name: Microsoft Azure Quantum
+- type: Integrations
+  url: https://quantumai.google/cirq/hardware/rigetti
+  name: Google Cirq Rigetti hardware module
+- type: ProtocolBuffers
+  url: https://github.com/rigetti/qcs-api-client-rust/tree/main/qcs-api-client-grpc/proto
+  name: QCS gRPC proto definitions
+- type: Specification
+  url: https://github.com/quil-lang/quil
+  name: Quil — Quantum Instruction Language Specification
+- type: Documentation
+  url: https://pyquil.readthedocs.io
+  name: pyQuil documentation
+- type: Documentation
+  url: https://docs.rs/qcs
+  name: qcs Rust crate docs
+- type: PrivacyPolicy
+  url: https://www.rigetti.com/privacy-policy
+- type: TermsOfService
+  url: https://www.rigetti.com/terms-of-service
+- url: plans/rigetti-plans-pricing.yml
+  type: Plans
+- url: rate-limits/rigetti-rate-limits.yml
+  type: RateLimits
+- url: finops/rigetti-finops.yml
+  type: FinOps
+- url: vocabulary/rigetti-vocabulary.yml
+  type: Vocabulary
+- url: json-ld/rigetti-context.jsonld
+  type: JSONLD
+- type: Features
+  data:
+  - Cepheus-1-108Q superconducting QPU (107 qubits) with 99.84% 1Q gate fidelity and 98.77% 2Q CZ gate fidelity
+  - Novera 9-qubit QPU for on-premises deployment with dilution refrigerator
+  - Hybrid REST + gRPC API surface — OpenAPI 3.0 HTTP API for management + gRPC for translation and execution
+  - OAuth2 / JWT (Okta) authentication with 24-hour access tokens
+  - Quil — open quantum instruction language with classical control flow and hybrid quantum-classical programs
+  - Translation service compiles native Quil programs to encrypted Controller Jobs server-side
+  - Controller service executes batched jobs on a QPU endpoint and returns readout results
+  - Reservation system for time-boxed exclusive QPU access via /v1/reservations and FindAvailableReservations
+  - Engagement-based access control — short-lived QPU access tokens scoped to a quantum processor endpoint
+  - Group / user billing with metered invoices and upcoming-invoice preview
+  - pyQuil 4.x Python library with Jupyter notebook tutorials and Forest SDK integration
+  - qcs-sdk multi-language SDK (Rust core + Python and C bindings)
+  - QVM (Quantum Virtual Machine) and quilc (Quil compiler) for local simulation and compilation
+  - QIR (Quantum Intermediate Representation) compiler via qcs-sdk-qir
+  - Qiskit provider via qiskit-rigetti
+  - Azure Quantum and AWS Braket third-party provider integrations
+  - Rigetti Resource Estimation (RRE) tool for fault-tolerant algorithm resource analysis
+  - Quantum Foundry Services for custom QPU development and partner programs
+  - Publicly traded on Nasdaq (RGTI) with quarterly SEC disclosures
+  sources:
+  - https://docs.rigetti.com/qcs/
+  - https://docs.api.qcs.rigetti.com/
+  - https://www.rigetti.com/
+- type: UseCases
+  data:
+  - Quantum algorithm research and benchmarking on real superconducting hardware
+  - Variational Quantum Eigensolver (VQE) and Quantum Approximate Optimization Algorithm (QAOA) workloads
+  - Hybrid quantum-classical machine learning experiments
+  - Quantum chemistry simulation via OpenFermion + forest-openfermion plugin
+  - Quantum characterization, verification, and validation (QCVV) using forest-benchmarking
+  - QPU calibration and Instruction Set Architecture introspection for low-level control
+  - Academic and government research access (MIT, NASA, Oxford Instruments, Standard Chartered, Edinburgh)
+  - On-premises quantum computing via Novera QPU for national labs and corporate R&D
+  - Custom QPU co-design through Quantum Foundry Services
+  - Multi-cloud quantum access through AWS Braket and Azure Quantum
+- type: Integrations
+  data:
+  - Amazon Braket (Rigetti as third-party QPU provider)
+  - Microsoft Azure Quantum (Rigetti as third-party QPU provider)
+  - Google Cirq with rigetti.* hardware module
+  - Qiskit (via qiskit-rigetti provider)
+  - OpenFermion (via forest-openfermion plugin)
+  - QIR Alliance (via qcs-sdk-qir compiler)
+  - Quil-lang ecosystem (quilc, qvm, quil-rs, libquil)
+  - Okta (OAuth2 identity provider)
+- type: Solutions
+  data:
+  - Quantum Cloud Services (QCS) — managed cloud access to Rigetti QPUs
+  - Novera QPU — on-premises 9-qubit superconducting system
+  - Quantum Foundry Services — custom quantum hardware development
+created: '2026-05-24'
+modified: '2026-05-24'

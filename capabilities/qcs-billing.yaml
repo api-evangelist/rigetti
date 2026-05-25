@@ -1,0 +1,217 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Rigetti QCS — Billing and Account
+  description: Self-contained Naftiko capability for the Rigetti QCS billing surface — user and group balances,
+    invoices, invoice line items, and upcoming-invoice previews.
+  tags:
+  - Rigetti
+  - QCS
+  - Billing
+  - Invoices
+  - FinOps
+  created: '2026-05-24'
+  modified: '2026-05-24'
+binds:
+- namespace: env
+  keys:
+    QCS_ACCESS_TOKEN: QCS_ACCESS_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: qcs-billing
+    baseUri: https://api.qcs.rigetti.com
+    description: Rigetti QCS billing business capability.
+    resources:
+    - name: user-balance
+      path: /v1/users/{userId}/balance
+      operations:
+      - name: getuserbalance
+        method: GET
+        description: Retrieve a user's QCS account balance.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+    - name: user-billing-customer
+      path: /v1/users/{userId}/billingCustomer
+      operations:
+      - name: getuserbillingcustomer
+        method: GET
+        description: Retrieve a user's billing customer profile.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+    - name: user-billing-invoices
+      path: /v1/users/{userId}/billingInvoices
+      operations:
+      - name: listuserbillinginvoices
+        method: GET
+        description: List a user's invoices.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+    - name: user-billing-invoice-lines
+      path: /v1/users/{userId}/billingInvoices/{billingInvoiceId}/lines
+      operations:
+      - name: listuserbillinginvoicelines
+        method: GET
+        description: List line items for a user invoice.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: billingInvoiceId
+          in: path
+          type: string
+          required: true
+    - name: user-upcoming-invoice
+      path: /v1/users/{userId}/billingInvoices:getUpcoming
+      operations:
+      - name: getuserupcomingbillinginvoice
+        method: GET
+        description: Preview the user's upcoming (in-progress) invoice.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+    - name: group-balance
+      path: /v1/groups/{groupName}/balance
+      operations:
+      - name: getgroupbalance
+        method: GET
+        description: Retrieve a QCS group balance.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupName
+          in: path
+          type: string
+          required: true
+    - name: group-billing-invoices
+      path: /v1/groups/{groupName}/billingInvoices
+      operations:
+      - name: listgroupbillinginvoices
+        method: GET
+        description: List group invoices.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupName
+          in: path
+          type: string
+          required: true
+    - name: group-upcoming-invoice
+      path: /v1/groups/{groupName}/billingInvoices:getUpcoming
+      operations:
+      - name: getgroupupcomingbillinginvoice
+        method: GET
+        description: Preview the group's upcoming (in-progress) invoice.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupName
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      value: '{{env.QCS_ACCESS_TOKEN}}'
+      placement: header
+  exposes:
+  - type: mcp
+    namespace: qcs-billing-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Rigetti QCS billing.
+    tools:
+    - name: rigetti-get-user-balance
+      description: Get user QCS balance.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: qcs-billing.getuserbalance
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: rigetti-list-user-invoices
+      description: List user invoices.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: qcs-billing.listuserbillinginvoices
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: rigetti-get-user-upcoming-invoice
+      description: Preview the user's upcoming invoice.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: qcs-billing.getuserupcomingbillinginvoice
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: rigetti-get-group-balance
+      description: Get group QCS balance.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: qcs-billing.getgroupbalance
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: rigetti-list-group-invoices
+      description: List group invoices.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: qcs-billing.listgroupbillinginvoices
+      outputParameters:
+      - type: object
+        mapping: $.
