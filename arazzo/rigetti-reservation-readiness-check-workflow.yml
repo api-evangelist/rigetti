@@ -1,0 +1,117 @@
+arazzo: 1.0.1
+info:
+  title: Rigetti Reservation Readiness Check
+  summary: Resolve the caller's identity and balance, read a processor's maintenance calendar, and surface available reservation slots before booking.
+  description: >-
+    Before committing to a paid QPU reservation, a client should know who it is
+    authenticated as, whether the account has spendable balance, when the
+    processor is in maintenance, and which slots are actually open. This
+    read-only workflow chains those four lookups: it resolves the authenticated
+    user, fetches that user's account balance, retrieves the processor's
+    maintenance iCal, and lists available reservation windows for the requested
+    time and duration. The result is everything a UI or agent needs to decide
+    whether and when to book. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: qcsApi
+  url: ../openapi/rigetti-qcs-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: reservation-readiness-check
+  summary: Gather identity, balance, maintenance, and availability ahead of booking.
+  description: >-
+    Resolves the authenticated user and balance, the processor's maintenance
+    calendar, and the open reservation slots for a requested window.
+  inputs:
+    type: object
+    required:
+    - token
+    - quantumProcessorId
+    - startTimeFrom
+    - duration
+    properties:
+      token:
+        type: string
+        description: A QCS JWT bearer token used to authenticate API requests.
+      quantumProcessorId:
+        type: string
+        description: The processor to check (e.g. Aspen-M-3).
+      startTimeFrom:
+        type: string
+        description: RFC3339 timestamp; the earliest acceptable reservation start.
+      duration:
+        type: string
+        description: Desired reservation length as a Go duration string (e.g. "30m").
+  steps:
+  - stepId: getUser
+    description: Resolve the authenticated user to obtain the QCS user id used for balance lookup.
+    operationId: AuthGetUser
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.token
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      userId: $response.body#/idpId
+  - stepId: getUserBalance
+    description: Retrieve the user's account balance in cents USD to confirm spend capacity.
+    operationId: GetUserBalance
+    parameters:
+    - name: userId
+      in: path
+      value: $steps.getUser.outputs.userId
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.token
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      balance: $response.body#/balance
+  - stepId: getCalendar
+    description: >-
+      Retrieve the processor's maintenance calendar (iCal) so the caller can
+      avoid windows where execution is unavailable.
+    operationId: GetQuantumProcessorCalendar
+    parameters:
+    - name: quantumProcessorId
+      in: path
+      value: $inputs.quantumProcessorId
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.token
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      maintenanceICal: $response.body#/maintenanceICal
+  - stepId: findAvailable
+    description: >-
+      List open reservation windows on the processor that start at or after the
+      requested time and match the requested duration.
+    operationId: FindAvailableReservations
+    parameters:
+    - name: quantumProcessorId
+      in: query
+      value: $inputs.quantumProcessorId
+    - name: startTimeFrom
+      in: query
+      value: $inputs.startTimeFrom
+    - name: duration
+      in: query
+      value: $inputs.duration
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.token
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      availableReservations: $response.body#/availableReservations
+      firstSlotStart: $response.body#/availableReservations/0/startTime
+      firstSlotPrice: $response.body#/availableReservations/0/price
+  outputs:
+    userId: $steps.getUser.outputs.userId
+    balance: $steps.getUserBalance.outputs.balance
+    maintenanceICal: $steps.getCalendar.outputs.maintenanceICal
+    availableReservations: $steps.findAvailable.outputs.availableReservations

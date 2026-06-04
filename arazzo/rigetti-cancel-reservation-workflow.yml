@@ -1,0 +1,112 @@
+arazzo: 1.0.1
+info:
+  title: Rigetti Cancel Reservation
+  summary: List a user's reservations, inspect the most relevant one, and cancel it, confirming the cancellation.
+  description: >-
+    Managing booked QPU time often means cancelling a reservation that is no
+    longer needed. This workflow lists the caller's existing reservations
+    filtered to a single processor, branches when none exist, otherwise reads
+    the first matching reservation to confirm its details, and then cancels it.
+    Because the cancel call returns the updated reservation, the flow can assert
+    the cancelled flag without an extra read. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: qcsApi
+  url: ../openapi/rigetti-qcs-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: cancel-reservation
+  summary: Find and cancel an existing reservation on a processor.
+  description: >-
+    Lists reservations on a processor, confirms the first match, and cancels it.
+    Ends early when the user has no reservations on the processor.
+  inputs:
+    type: object
+    required:
+    - token
+    - quantumProcessorId
+    properties:
+      token:
+        type: string
+        description: A QCS JWT bearer token used to authenticate API requests.
+      quantumProcessorId:
+        type: string
+        description: The processor whose reservations should be filtered (e.g. Aspen-M-3).
+      order:
+        type: string
+        description: >-
+          Optional order expression for the listing (e.g. "startTime DESC").
+        default: startTime DESC
+  steps:
+  - stepId: listReservations
+    description: >-
+      List the caller's reservations filtered to the requested processor,
+      ordered so the most relevant reservation appears first.
+    operationId: ListReservations
+    parameters:
+    - name: filter
+      in: query
+      value: quantumProcessorId = "$inputs.quantumProcessorId"
+    - name: order
+      in: query
+      value: $inputs.order
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.token
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      reservationId: $response.body#/reservations/0/id
+    onSuccess:
+    - name: hasReservation
+      type: goto
+      stepId: getReservation
+      criteria:
+      - context: $response.body
+        condition: $.reservations.length > 0
+        type: jsonpath
+    - name: noReservations
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.reservations.length == 0
+        type: jsonpath
+  - stepId: getReservation
+    description: Read the selected reservation by id to confirm its details before cancelling.
+    operationId: GetReservation
+    parameters:
+    - name: reservationId
+      in: path
+      value: $steps.listReservations.outputs.reservationId
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.token
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      reservationId: $response.body#/id
+      startTime: $response.body#/startTime
+      endTime: $response.body#/endTime
+      cancelled: $response.body#/cancelled
+  - stepId: deleteReservation
+    description: >-
+      Cancel the reservation. The response returns the updated reservation with
+      its cancelled flag set.
+    operationId: DeleteReservation
+    parameters:
+    - name: reservationId
+      in: path
+      value: $steps.getReservation.outputs.reservationId
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.token
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      reservationId: $response.body#/id
+      cancelled: $response.body#/cancelled
+  outputs:
+    reservationId: $steps.deleteReservation.outputs.reservationId
+    cancelled: $steps.deleteReservation.outputs.cancelled

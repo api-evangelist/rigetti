@@ -1,0 +1,119 @@
+arazzo: 1.0.1
+info:
+  title: Rigetti Provision Endpoint and Engage
+  summary: Create a private endpoint for a processor, poll until it reports healthy, then create an engagement against it.
+  description: >-
+    Teams that want a dedicated entry point to a quantum processor provision
+    their own endpoint rather than sharing the default. This workflow creates an
+    endpoint bound to a processor, polls the endpoint until it reports healthy
+    (newly provisioned endpoints take time to stand up), and then creates an
+    engagement against it so the team can execute. The poll loop retries the get
+    call while the endpoint is still coming up. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: qcsApi
+  url: ../openapi/rigetti-qcs-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: provision-endpoint-and-engage
+  summary: Provision a dedicated endpoint, wait for it to become healthy, and engage on it.
+  description: >-
+    Creates an endpoint for a processor, polls it until healthy, and then
+    creates a credentialed engagement against the new endpoint.
+  inputs:
+    type: object
+    required:
+    - token
+    - quantumProcessorId
+    properties:
+      token:
+        type: string
+        description: A QCS JWT bearer token used to authenticate API requests.
+      quantumProcessorId:
+        type: string
+        description: The processor the new endpoint should serve (e.g. Aspen-M-3).
+      datacenters:
+        type: array
+        description: >-
+          Optional datacenters available for endpoint placement. Defaults to
+          berkeley-775 when omitted.
+        items:
+          type: string
+  steps:
+  - stepId: createEndpoint
+    description: Create an endpoint associated with the caller's account, bound to the processor.
+    operationId: CreateEndpoint
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.token
+    requestBody:
+      contentType: application/json
+      payload:
+        quantumProcessorIds:
+        - $inputs.quantumProcessorId
+        datacenters: $inputs.datacenters
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      endpointId: $response.body#/id
+      healthy: $response.body#/healthy
+  - stepId: waitForHealthy
+    description: >-
+      Poll the endpoint until it reports healthy. Retries while the endpoint is
+      still provisioning, then proceeds to engage once it is up.
+    operationId: GetEndpoint
+    parameters:
+    - name: endpointId
+      in: path
+      value: $steps.createEndpoint.outputs.endpointId
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.token
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      endpointId: $response.body#/id
+      healthy: $response.body#/healthy
+    onSuccess:
+    - name: ready
+      type: goto
+      stepId: createEngagement
+      criteria:
+      - context: $response.body
+        condition: $.healthy == true
+        type: jsonpath
+    onFailure:
+    - name: stillProvisioning
+      type: retry
+      retryAfter: 10
+      retryLimit: 30
+      criteria:
+      - condition: $statusCode == 200
+  - stepId: createEngagement
+    description: >-
+      Create an engagement against the now-healthy endpoint, returning the
+      address and credentials required to execute on the processor.
+    operationId: CreateEngagement
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.token
+    requestBody:
+      contentType: application/json
+      payload:
+        endpointId: $steps.createEndpoint.outputs.endpointId
+        quantumProcessorId: $inputs.quantumProcessorId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      address: $response.body#/address
+      expiresAt: $response.body#/expiresAt
+      clientPublic: $response.body#/credentials/clientPublic
+      serverPublic: $response.body#/credentials/serverPublic
+  outputs:
+    endpointId: $steps.createEndpoint.outputs.endpointId
+    address: $steps.createEngagement.outputs.address
+    expiresAt: $steps.createEngagement.outputs.expiresAt

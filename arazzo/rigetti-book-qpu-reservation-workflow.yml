@@ -1,0 +1,133 @@
+arazzo: 1.0.1
+info:
+  title: Rigetti Book QPU Reservation
+  summary: Find an available reservation slot on a quantum processor, book it, and confirm the booking.
+  description: >-
+    Reserving dedicated time on a Rigetti quantum processor is a three-act flow:
+    discover an open slot that satisfies a requested start window and duration,
+    create a reservation for the slot's exact start and end times, and then read
+    the reservation back to confirm it was persisted and priced. The workflow
+    branches when no slot is available so callers can react without a failed
+    booking attempt. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: qcsApi
+  url: ../openapi/rigetti-qcs-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: book-qpu-reservation
+  summary: Find and book a dedicated reservation slot on a quantum processor.
+  description: >-
+    Searches for available reservation windows on a processor, books the first
+    available slot, and confirms the created reservation. Ends early when no
+    slot is available.
+  inputs:
+    type: object
+    required:
+    - token
+    - quantumProcessorId
+    - startTimeFrom
+    - duration
+    properties:
+      token:
+        type: string
+        description: A QCS JWT bearer token used to authenticate API requests.
+      quantumProcessorId:
+        type: string
+        description: The processor to reserve time on (e.g. Aspen-M-3).
+      startTimeFrom:
+        type: string
+        description: RFC3339 timestamp; the earliest acceptable reservation start.
+      duration:
+        type: string
+        description: >-
+          Desired reservation length as a Go duration string (e.g. "15m",
+          "1h").
+      notes:
+        type: string
+        description: Optional free-text notes to attach to the reservation.
+  steps:
+  - stepId: findAvailable
+    description: >-
+      List currently available reservation windows on the requested processor
+      that start at or after the requested time and match the duration.
+    operationId: FindAvailableReservations
+    parameters:
+    - name: quantumProcessorId
+      in: query
+      value: $inputs.quantumProcessorId
+    - name: startTimeFrom
+      in: query
+      value: $inputs.startTimeFrom
+    - name: duration
+      in: query
+      value: $inputs.duration
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.token
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      slotStartTime: $response.body#/availableReservations/0/startTime
+      slotEndTime: $response.body#/availableReservations/0/endTime
+      slotPrice: $response.body#/availableReservations/0/price
+    onSuccess:
+    - name: slotFound
+      type: goto
+      stepId: createReservation
+      criteria:
+      - context: $response.body
+        condition: $.availableReservations.length > 0
+        type: jsonpath
+    - name: noSlot
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.availableReservations.length == 0
+        type: jsonpath
+  - stepId: createReservation
+    description: >-
+      Create a reservation for the discovered slot's exact start and end times
+      on the requested processor.
+    operationId: CreateReservation
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.token
+    requestBody:
+      contentType: application/json
+      payload:
+        quantumProcessorId: $inputs.quantumProcessorId
+        startTime: $steps.findAvailable.outputs.slotStartTime
+        endTime: $steps.findAvailable.outputs.slotEndTime
+        notes: $inputs.notes
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      reservationId: $response.body#/id
+      price: $response.body#/price
+  - stepId: confirmReservation
+    description: >-
+      Read the newly created reservation back by id to confirm it was persisted
+      with the expected processor, times, and price.
+    operationId: GetReservation
+    parameters:
+    - name: reservationId
+      in: path
+      value: $steps.createReservation.outputs.reservationId
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.token
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      reservationId: $response.body#/id
+      startTime: $response.body#/startTime
+      endTime: $response.body#/endTime
+      cancelled: $response.body#/cancelled
+  outputs:
+    reservationId: $steps.confirmReservation.outputs.reservationId
+    startTime: $steps.confirmReservation.outputs.startTime
+    endTime: $steps.confirmReservation.outputs.endTime
+    price: $steps.createReservation.outputs.price

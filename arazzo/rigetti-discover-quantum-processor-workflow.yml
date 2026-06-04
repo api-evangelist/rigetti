@@ -1,0 +1,111 @@
+arazzo: 1.0.1
+info:
+  title: Rigetti Discover Quantum Processor
+  summary: List available QPUs, then inspect one processor's metadata, instruction set architecture, and live accessors.
+  description: >-
+    The starting point for any Rigetti QCS integration. The workflow lists the
+    quantum processors the caller is authorized to access, selects one, and
+    then pulls the three pieces of static metadata a client needs before it can
+    compile and run a program: the processor record, its instruction set
+    architecture (ISA), and the gRPC accessors that expose live hardware. Every
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: qcsApi
+  url: ../openapi/rigetti-qcs-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: discover-quantum-processor
+  summary: Resolve a usable QPU and its instruction set architecture and accessors.
+  description: >-
+    Lists the quantum processors visible to the caller, resolves the supplied
+    (or first-listed) processor id, and retrieves its ISA and live accessors so
+    a client knows how to compile for and connect to the hardware.
+  inputs:
+    type: object
+    required:
+    - token
+    properties:
+      token:
+        type: string
+        description: A QCS JWT bearer token used to authenticate API requests.
+      quantumProcessorId:
+        type: string
+        description: >-
+          Optional processor id to inspect (e.g. Aspen-M-3). When omitted the
+          first processor returned by the list call is used.
+      pageSize:
+        type: integer
+        description: How many processors to return when listing.
+        default: 10
+  steps:
+  - stepId: listProcessors
+    description: >-
+      List the quantum processors the authenticated user is authorized to
+      access. With no token only public processors are returned.
+    operationId: ListQuantumProcessors
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.token
+    - name: pageSize
+      in: query
+      value: $inputs.pageSize
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstProcessorId: $response.body#/quantumProcessors/0/id
+      nextPageToken: $response.body#/nextPageToken
+  - stepId: getProcessor
+    description: >-
+      Retrieve the single quantum processor record, either the supplied id or
+      the first one discovered in the list step.
+    operationId: GetQuantumProcessor
+    parameters:
+    - name: quantum_processor_id
+      in: path
+      value: $inputs.quantumProcessorId
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.token
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      processorId: $response.body#/id
+  - stepId: getInstructionSetArchitecture
+    description: >-
+      Retrieve the instruction set architecture (nodes, edges, and operations)
+      for the resolved processor so a client can compile valid Quil programs.
+    operationId: GetInstructionSetArchitecture
+    parameters:
+    - name: quantum_processor_id
+      in: path
+      value: $steps.getProcessor.outputs.processorId
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.token
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      architecture: $response.body#/architecture
+  - stepId: getAccessors
+    description: >-
+      Retrieve the controller accessors (gRPC endpoints) for the resolved
+      processor so a client knows where to connect for live execution.
+    operationId: GetQuantumProcessorAccessors
+    parameters:
+    - name: quantum_processor_id
+      in: path
+      value: $steps.getProcessor.outputs.processorId
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.token
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      accessors: $response.body#/accessors
+  outputs:
+    processorId: $steps.getProcessor.outputs.processorId
+    architecture: $steps.getInstructionSetArchitecture.outputs.architecture
+    accessors: $steps.getAccessors.outputs.accessors

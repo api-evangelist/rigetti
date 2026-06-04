@@ -1,0 +1,106 @@
+arazzo: 1.0.1
+info:
+  title: Rigetti Create Execution Engagement
+  summary: Resolve a processor's default endpoint and create an engagement that grants credentialed access to execute on the QPU.
+  description: >-
+    Execution on a Rigetti QPU is gated by an engagement: an authorization that
+    returns the network address and ZeroMQ CURVE credentials a client uses to
+    submit compiled programs over the data plane. This workflow confirms the
+    target processor exists, resolves the endpoint set as its default, and then
+    creates an engagement scoped to that processor, returning the address,
+    credentials, and expiry the client needs to connect. Job submission and
+    result retrieval themselves happen over the gRPC/RPCQ data plane that this
+    control-plane API does not expose, so the workflow stops at producing a
+    valid engagement. Every step spells out its request inline so the flow can
+    be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: qcsApi
+  url: ../openapi/rigetti-qcs-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-execution-engagement
+  summary: Produce a credentialed engagement for executing on a quantum processor.
+  description: >-
+    Validates the processor, resolves its default endpoint, and creates an
+    engagement returning the address and credentials required to run programs on
+    the hardware.
+  inputs:
+    type: object
+    required:
+    - token
+    - quantumProcessorId
+    properties:
+      token:
+        type: string
+        description: A QCS JWT bearer token used to authenticate API requests.
+      quantumProcessorId:
+        type: string
+        description: The processor to engage on (e.g. Aspen-M-3).
+      tags:
+        type: array
+        description: Optional tags recorded on QPU requests for usage reporting.
+        items:
+          type: string
+  steps:
+  - stepId: getProcessor
+    description: Confirm the target quantum processor exists before engaging.
+    operationId: GetQuantumProcessor
+    parameters:
+    - name: quantum_processor_id
+      in: path
+      value: $inputs.quantumProcessorId
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.token
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      processorId: $response.body#/id
+  - stepId: getDefaultEndpoint
+    description: >-
+      Resolve the endpoint marked as default for the processor; this is the
+      endpoint the engagement will grant access to.
+    operationId: GetDefaultEndpoint
+    parameters:
+    - name: quantumProcessorId
+      in: path
+      value: $steps.getProcessor.outputs.processorId
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.token
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      endpointId: $response.body#/id
+      healthy: $response.body#/healthy
+  - stepId: createEngagement
+    description: >-
+      Create an engagement against the resolved endpoint, returning the address
+      and CURVE credentials required to execute programs on the QPU.
+    operationId: CreateEngagement
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.token
+    requestBody:
+      contentType: application/json
+      payload:
+        endpointId: $steps.getDefaultEndpoint.outputs.endpointId
+        quantumProcessorId: $steps.getProcessor.outputs.processorId
+        tags: $inputs.tags
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      address: $response.body#/address
+      endpointId: $response.body#/endpointId
+      expiresAt: $response.body#/expiresAt
+      clientPublic: $response.body#/credentials/clientPublic
+      clientSecret: $response.body#/credentials/clientSecret
+      serverPublic: $response.body#/credentials/serverPublic
+  outputs:
+    address: $steps.createEngagement.outputs.address
+    endpointId: $steps.createEngagement.outputs.endpointId
+    expiresAt: $steps.createEngagement.outputs.expiresAt
+    clientPublic: $steps.createEngagement.outputs.clientPublic
+    serverPublic: $steps.createEngagement.outputs.serverPublic

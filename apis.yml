@@ -117,6 +117,27 @@ kind: contract
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
+- type: ArazzoWorkflows
+  url: arazzo/
+  workflows:
+  - url: arazzo/rigetti-book-qpu-reservation-workflow.yml
+    name: Rigetti Book QPU Reservation
+    summary: Find an available reservation slot on a quantum processor, book it, and confirm the booking.
+  - url: arazzo/rigetti-cancel-reservation-workflow.yml
+    name: Rigetti Cancel Reservation
+    summary: List a user's reservations, inspect the most relevant one, and cancel it, confirming the cancellation.
+  - url: arazzo/rigetti-create-execution-engagement-workflow.yml
+    name: Rigetti Create Execution Engagement
+    summary: Resolve a processor's default endpoint and create an engagement that grants credentialed access to execute on the QPU.
+  - url: arazzo/rigetti-discover-quantum-processor-workflow.yml
+    name: Rigetti Discover Quantum Processor
+    summary: List available QPUs, then inspect one processor's metadata, instruction set architecture, and live accessors.
+  - url: arazzo/rigetti-provision-endpoint-and-engage-workflow.yml
+    name: Rigetti Provision Endpoint and Engage
+    summary: Create a private endpoint for a processor, poll until it reports healthy, then create an engagement against it.
+  - url: arazzo/rigetti-reservation-readiness-check-workflow.yml
+    name: Rigetti Reservation Readiness Check
+    summary: Resolve the caller's identity and balance, read a processor's maintenance calendar, and surface available reservation slots before booking.
 - type: Portal
   url: https://www.rigetti.com
 - type: SignUp
