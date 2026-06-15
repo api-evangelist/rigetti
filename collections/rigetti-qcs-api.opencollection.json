@@ -1,0 +1,1363 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rigetti QCS API",
+    "version": "Thu Jul 30 2020 20:00:00 GMT-0400 (Eastern Daylight Time)"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Default",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetHealth",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/"
+          },
+          "docs": "Retrieve the health status of the API"
+        },
+        {
+          "info": {
+            "name": "Health Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/"
+          },
+          "docs": "Endpoint to return a status 200 for load balancer health checks"
+        },
+        {
+          "info": {
+            "name": "Health Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/healthcheck"
+          },
+          "docs": "Check the health of the service."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/endpoints",
+            "params": [
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filtering logic specified using [rule-engine](https://zerosteiner.github.io/rule-engine/syntax.html) grammar"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List all endpoints, optionally filtering by attribute."
+        },
+        {
+          "info": {
+            "name": "Create Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.qcs.rigetti.com/v1/endpoints",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create an endpoint associated with your user account."
+        },
+        {
+          "info": {
+            "name": "Get Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/endpoints/:endpointId",
+            "params": [
+              {
+                "name": "endpointId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a specific endpoint by its ID."
+        },
+        {
+          "info": {
+            "name": "Delete Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.qcs.rigetti.com/v1/endpoints/:endpointId",
+            "params": [
+              {
+                "name": "endpointId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete an endpoint, releasing its resources. This operation is not reversible."
+        },
+        {
+          "info": {
+            "name": "Restart Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.qcs.rigetti.com/v1/endpoints/:endpointId:restart",
+            "params": [
+              {
+                "name": "endpointId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Restart an entire endpoint or a single component within an endpoint."
+        },
+        {
+          "info": {
+            "name": "Get Default Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/quantumProcessors/:quantumProcessorId/endpoints:getDefault",
+            "params": [
+              {
+                "name": "quantumProcessorId",
+                "value": "",
+                "type": "path",
+                "description": "Public identifier for a quantum processor [example: Aspen-1]"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the endpoint set as \"default\" for the given Quantum Processor.\n\nIf no endpoint is set as the default, return \"not found.\""
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "engagements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Engagement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.qcs.rigetti.com/v1/engagements",
+            "headers": [
+              {
+                "name": "x-qcs-account-id",
+                "value": ""
+              },
+              {
+                "name": "x-qcs-account-type",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new engagement using the specified parameters.\n\nAt least one of the following parameters must be supplied:\n- **endpointId**: The ID of the endpoint on which to engage.\n- **quantumProcessorId**: The ID of the quantum processor on which to engage, allowing the\n    service to select a default endpoint. Ignored if **endpointId** is set."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "quantumProcessors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Quantum Processor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/quantumProcessors/:quantum_processor_id",
+            "params": [
+              {
+                "name": "quantum_processor_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a single `QuantumProcessor` by ID."
+        },
+        {
+          "info": {
+            "name": "List Quantum Processors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/quantumProcessors",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List the [`QuantumProcessor`]s that this user is authorized to access.\n\nIf no auth token is provided, only public processors will be returned."
+        },
+        {
+          "info": {
+            "name": "Get Quantum Processor Accessors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/quantumProcessors/:quantum_processor_id/accessors",
+            "params": [
+              {
+                "name": "quantum_processor_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a single `QuantumProcessor` by ID."
+        },
+        {
+          "info": {
+            "name": "Get Instruction Set Architecture",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/quantumProcessors/:quantum_processor_id/instructionSetArchitecture",
+            "params": [
+              {
+                "name": "quantum_processor_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Instruction Set Architecture"
+        },
+        {
+          "info": {
+            "name": "List Instruction Set Architectures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/instructionSetArchitectures",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Instruction Set Architectures"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Email Password Reset Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.qcs.rigetti.com/v1/auth:emailPasswordResetToken",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a password reset link to the provided email address, if that email matches a registered user."
+        },
+        {
+          "info": {
+            "name": "Get User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/auth:getUser",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the profile of the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Reset Password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.qcs.rigetti.com/v1/auth:resetPassword",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Reset the password using the user's existing password. Note, this is an authenticated route."
+        },
+        {
+          "info": {
+            "name": "Reset Password With Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.qcs.rigetti.com/v1/auth:resetPasswordWithToken",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Complete the forgot password flow, resetting the new password in exchange for an emailed token."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "reservations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Quantum Processor Calendar",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/calendars/:quantumProcessorId",
+            "params": [
+              {
+                "name": "quantumProcessorId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get calendar details for the requested quantum processor."
+        },
+        {
+          "info": {
+            "name": "List Group Reservations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/groups/:groupName/reservations",
+            "params": [
+              {
+                "name": "groupName",
+                "value": "",
+                "type": "path",
+                "description": "URL encoded name of group for which to retrieve reservations."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "An opaque token that can be appended to a request query to retrieve the next page of results. Empty if there are no more results to retrieve."
+              },
+              {
+                "name": "showDeleted",
+                "value": "",
+                "type": "query",
+                "description": "If you wish to include deleted (or cancelled) resources in your response, include `showDeleted=true`."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List existing reservations for the requested group.\n\nAvailable filter fields include:\n\n* `startTime` - timestamp\n* `endTime` - timestamp\n* `createdTime` - timestamp\n* `price` - integer\n* `quantumProcessorId` - string\n\nAvailable order fields include:\n\n* `startTime` - timestamp\n* `endTime` - timestamp\n* `createdTime` - timestamp\n* `price` - integer\n"
+        },
+        {
+          "info": {
+            "name": "List Reservations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/reservations",
+            "headers": [
+              {
+                "name": "X-QCS-ACCOUNT-ID",
+                "value": ""
+              },
+              {
+                "name": "X-QCS-ACCOUNT-TYPE",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "An opaque token that can be appended to a request query to retrieve the next page of results. Empty if there are no more results to retrieve."
+              },
+              {
+                "name": "showDeleted",
+                "value": "",
+                "type": "query",
+                "description": "If you wish to include deleted (or cancelled) resources in your response, include `showDeleted=true`."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List existing reservations for the authenticated user,\nor a target user when specifying `X-QCS-ACCOUNT-ID` and `X-QCS-ACCOUNT-TYPE`\nheaders.\n\nAvailable filter fields include:\n\n* `startTime` - timestamp\n* `endTime` - timestamp\n* `createdTime` - timestamp\n* `price` - integer\n* `cancelled` - boolean (deprecated, use `showDeleted` parameter)\n* `quantumProcessorId` - string\n\nAvailable order fields include:\n\n* `startTime` - timestamp\n* `endTime` - timestamp\n* `createdTime` - timestamp\n* `price` - inte"
+        },
+        {
+          "info": {
+            "name": "Create Reservation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.qcs.rigetti.com/v1/reservations",
+            "headers": [
+              {
+                "name": "X-QCS-ACCOUNT-ID",
+                "value": ""
+              },
+              {
+                "name": "X-QCS-ACCOUNT-TYPE",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new reservation.\n\nThe following precedence applies when specifying the reservation subject account\nID and type:\n* request body `accountId` field, or if unset then `X-QCS-ACCOUNT-ID` header,\nor if unset then requesting user's ID.\n* request body `accountType` field, or if unset then `X-QCS-ACCOUNT-TYPE`\nheader, or if unset then \"user\" type.\n"
+        },
+        {
+          "info": {
+            "name": "Get Reservation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/reservations/:reservationId",
+            "params": [
+              {
+                "name": "reservationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Find an existing reservation by ID."
+        },
+        {
+          "info": {
+            "name": "Delete Reservation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.qcs.rigetti.com/v1/reservations/:reservationId",
+            "params": [
+              {
+                "name": "reservationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Cancel an existing reservation for the user."
+        },
+        {
+          "info": {
+            "name": "Find Available Reservations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/reservations:findAvailable",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "An opaque token that can be appended to a request query to retrieve the next page of results. Empty if there are no more results to retrieve."
+              },
+              {
+                "name": "quantumProcessorId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startTimeFrom",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "duration",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List currently available reservations on the requested Rigetti quantum computer."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "clientApplications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Client Applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/clientApplications"
+          },
+          "docs": "List supported clients of Rigetti system components along with their latest and minimum supported versions."
+        },
+        {
+          "info": {
+            "name": "Get Client Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/clientApplications/:clientApplicationName",
+            "params": [
+              {
+                "name": "clientApplicationName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get details of a specific Rigetti system component along with its latest and minimum supported versions."
+        },
+        {
+          "info": {
+            "name": "Check Client Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.qcs.rigetti.com/v1/clientApplications:check",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check the requested client application version against the latest and minimum version."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Group Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/groups/:groupName/balance",
+            "params": [
+              {
+                "name": "groupName",
+                "value": "",
+                "type": "path",
+                "description": "URL encoded name of group for which to retrieve account balance."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the balance of the requested QCS group account."
+        },
+        {
+          "info": {
+            "name": "GetGroupBillingCustomer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/groups/:groupName/billingCustomer",
+            "params": [
+              {
+                "name": "groupName",
+                "value": "",
+                "type": "path",
+                "description": "URL-encoded name of group."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve billing customer for a QCS group account."
+        },
+        {
+          "info": {
+            "name": "ListGroupBillingInvoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/groups/:groupName/billingInvoices",
+            "params": [
+              {
+                "name": "groupName",
+                "value": "",
+                "type": "path",
+                "description": "URL-encoded name of group."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "An opaque token that can be appended to a request query to retrieve the next page of results. Empty if there are no more results to retrieve."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve billing invoices for a QCS group account."
+        },
+        {
+          "info": {
+            "name": "ListGroupBillingInvoiceLines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/groups/:groupName/billingInvoices/:billingInvoiceId/lines",
+            "params": [
+              {
+                "name": "groupName",
+                "value": "",
+                "type": "path",
+                "description": "URL-encoded name of group."
+              },
+              {
+                "name": "billingInvoiceId",
+                "value": "",
+                "type": "path",
+                "description": "URL-encoded billing invoice id."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "An opaque token that can be appended to a request query to retrieve the next page of results. Empty if there are no more results to retrieve."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve billing invoice lines for a QCS group account's invoice."
+        },
+        {
+          "info": {
+            "name": "GetGroupUpcomingBillingInvoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/groups/:groupName/billingInvoices:getUpcoming",
+            "params": [
+              {
+                "name": "groupName",
+                "value": "",
+                "type": "path",
+                "description": "URL-encoded name of group."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve upcoming invoice for QCS group billing customer."
+        },
+        {
+          "info": {
+            "name": "ListGroupUpcomingBillingInvoiceLines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/groups/:groupName/billingInvoices:listUpcomingLines",
+            "params": [
+              {
+                "name": "groupName",
+                "value": "",
+                "type": "path",
+                "description": "URL-encoded name of group."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "An opaque token that can be appended to a request query to retrieve the next page of results. Empty if there are no more results to retrieve."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List invoice lines for QCS group billing customer upcoming invoice."
+        },
+        {
+          "info": {
+            "name": "List users belonging to a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/groups/:groupName/users",
+            "params": [
+              {
+                "name": "groupName",
+                "value": "",
+                "type": "path",
+                "description": "URL encoded name of group for which to retrieve users."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "An opaque token that can be appended to a request query to retrieve the next page of results. Empty if there are no more results to retrieve."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List users belonging to a group. Note, group membership may take several minutes to update within our identity provider. After adding or removing a user to or from a group, please allow up to 60 minutes for changes to be reflected."
+        },
+        {
+          "info": {
+            "name": "Add user to a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.qcs.rigetti.com/v1/groups:addUser",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Add a user to a group. Note, group membership may take several minutes to update within our identity provider. After adding a user to a group, please allow up to 60 minutes for changes to be reflected."
+        },
+        {
+          "info": {
+            "name": "Remove user from a group.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.qcs.rigetti.com/v1/groups:removeUser",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Remove a user from a group. Note, group membership may take several minutes to update within our identity provider. After removing a user from a group, please allow up to 60 minutes for changes to be reflected."
+        },
+        {
+          "info": {
+            "name": "Get User Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/users/:userId/balance",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The user's QCS id. May be found as `idpId` in the `AuthGetUser` API call."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the balance of the requested QCS user account."
+        },
+        {
+          "info": {
+            "name": "GetUserBillingCustomer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/users/:userId/billingCustomer",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The user's QCS id. May be found as `idpId` in the `AuthGetUser` API call."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve billing customer for a QCS user account."
+        },
+        {
+          "info": {
+            "name": "ListUserBillingInvoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/users/:userId/billingInvoices",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The user's QCS id. May be found as `idpId` in the `AuthGetUser` API call."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "An opaque token that can be appended to a request query to retrieve the next page of results. Empty if there are no more results to retrieve."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve billing invoices for a QCS user account."
+        },
+        {
+          "info": {
+            "name": "ListUserBillingInvoiceLines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/users/:userId/billingInvoices/:billingInvoiceId/lines",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "URL-encoded QCS id of user. May be found as `idpId` in the `AuthGetUser` API call."
+              },
+              {
+                "name": "billingInvoiceId",
+                "value": "",
+                "type": "path",
+                "description": "URL-encoded billing invoice id."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "An opaque token that can be appended to a request query to retrieve the next page of results. Empty if there are no more results to retrieve."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve billing invoice lines for a QCS user account's invoice."
+        },
+        {
+          "info": {
+            "name": "GetUserUpcomingBillingInvoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/users/:userId/billingInvoices:getUpcoming",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The user's QCS id. May be found as `idpId` in the `AuthGetUser` API call."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve upcoming invoice for QCS user billing customer."
+        },
+        {
+          "info": {
+            "name": "ListUserUpcomingBillingInvoiceLines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/users/:userId/billingInvoices:listUpcomingLines",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The user's QCS id. May be found as `idpId` in the `AuthGetUser` API call."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "An opaque token that can be appended to a request query to retrieve the next page of results. Empty if there are no more results to retrieve."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List invoice lines for QCS user billing customer upcoming invoice."
+        },
+        {
+          "info": {
+            "name": "GetUserEventBillingPrice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.qcs.rigetti.com/v1/users/:userId/eventBillingPrices:get",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The user's QCS id. May be found as `idpId` in the `AuthGetUser` API call."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve `EventBillingPrice` for a user for a specific event. If no price is configured this operation will return a default `EventBillingPrice` for the specified `product`."
+        },
+        {
+          "info": {
+            "name": "List QCS groups for the requested user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/users/:userId/groups",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The user's QCS id. May be found as `idpId` in the `AuthGetUser` API call."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "An opaque token that can be appended to a request query to retrieve the next page of results. Empty if there are no more results to retrieve."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List QCS groups for the requested user"
+        },
+        {
+          "info": {
+            "name": "Activate User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.qcs.rigetti.com/v1/users:activate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activate a user, completing an invitation request."
+        },
+        {
+          "info": {
+            "name": "ListViewerAnnouncements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/viewer/announcements",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "An opaque token that can be appended to a request query to retrieve the next page of results. Empty if there are no more results to retrieve."
+              },
+              {
+                "name": "includeDismissed",
+                "value": "",
+                "type": "query",
+                "description": "Include dismissed announcements in the response."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List all announcements relevant to the authenticating user. By default, does not include dismissed announcements."
+        },
+        {
+          "info": {
+            "name": "DismissViewerAnnouncement",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.qcs.rigetti.com/v1/viewer/announcements/:announcementId",
+            "params": [
+              {
+                "name": "announcementId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of an existing announcement."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Dismiss an announcement for an authenticating user, indicating that they do not want to see it again."
+        },
+        {
+          "info": {
+            "name": "UpdateViewerUserProfile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.qcs.rigetti.com/v1/viewer/userProfile",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update the profile of the authenticated user."
+        },
+        {
+          "info": {
+            "name": "GetViewerUserOnboardingCompleted",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.qcs.rigetti.com/v1/viewer/onboardingCompleted",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get the onboarding status of the authenticated user."
+        },
+        {
+          "info": {
+            "name": "PutViewerUserOnboardingCompleted",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.qcs.rigetti.com/v1/viewer/onboardingCompleted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update the onboarding status of the authenticated user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
