@@ -29,10 +29,10 @@ apis:
       - url: json-ld/rigetti-context.jsonld
         type: JSONLD
       - url: https://github.com/rigetti/qcs-api-client-rust
-        type: SDK
+        type: SDKs
         name: Rust API Client
       - url: https://github.com/rigetti/qcs-api-client-python
-        type: SDK
+        type: SDKs
         name: Python API Client
     description: >-
       The Rigetti Quantum Cloud Services (QCS) HTTP API is the OpenAPI-specified REST surface for managing accounts,
@@ -57,7 +57,7 @@ apis:
         type: ProtocolBuffers
         name: Translation service proto definitions
       - url: https://github.com/rigetti/qcs-api-client-rust
-        type: SDK
+        type: SDKs
     description: >-
       gRPC Translation service that compiles native Quil programs into encrypted Controller Jobs for execution on a
       Rigetti QPU. Operations include TranslateQuilToEncryptedControllerJob and
@@ -80,7 +80,7 @@ apis:
         type: ProtocolBuffers
         name: Controller service proto definitions
       - url: https://github.com/rigetti/qcs-api-client-rust
-        type: SDK
+        type: SDKs
     description: >-
       gRPC Controller service that executes encrypted Controller Jobs on a Rigetti QPU endpoint and returns measurement
       (readout) results. Operations include ExecuteControllerJob, BatchExecuteControllerJobs, GetControllerJobResults,
@@ -115,36 +115,27 @@ access: 3rd-Party
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/rigetti-computing/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/rigetti-book-qpu-reservation-workflow.yml
-        name: Rigetti Book QPU Reservation
-        summary: Find an available reservation slot on a quantum processor, book it, and confirm the booking.
-      - url: arazzo/rigetti-cancel-reservation-workflow.yml
-        name: Rigetti Cancel Reservation
-        summary: List a user's reservations, inspect the most relevant one, and cancel it, confirming the cancellation.
-      - url: arazzo/rigetti-create-execution-engagement-workflow.yml
-        name: Rigetti Create Execution Engagement
-        summary: >-
-          Resolve a processor's default endpoint and create an engagement that grants credentialed access to execute on
-          the QPU.
-      - url: arazzo/rigetti-discover-quantum-processor-workflow.yml
-        name: Rigetti Discover Quantum Processor
-        summary: List available QPUs, then inspect one processor's metadata, instruction set architecture, and live accessors.
-      - url: arazzo/rigetti-provision-endpoint-and-engage-workflow.yml
-        name: Rigetti Provision Endpoint and Engage
-        summary: >-
-          Create a private endpoint for a processor, poll until it reports healthy, then create an engagement against
-          it.
-      - url: arazzo/rigetti-reservation-readiness-check-workflow.yml
-        name: Rigetti Reservation Readiness Check
-        summary: >-
-          Resolve the caller's identity and balance, read a processor's maintenance calendar, and surface available
-          reservation slots before booking.
+  - type: Arazzo
+    url: arazzo/rigetti-book-qpu-reservation-workflow.yml
+    name: Rigetti Book QPU Reservation
+  - type: Arazzo
+    url: arazzo/rigetti-cancel-reservation-workflow.yml
+    name: Rigetti Cancel Reservation
+  - type: Arazzo
+    url: arazzo/rigetti-create-execution-engagement-workflow.yml
+    name: Rigetti Create Execution Engagement
+  - type: Arazzo
+    url: arazzo/rigetti-discover-quantum-processor-workflow.yml
+    name: Rigetti Discover Quantum Processor
+  - type: Arazzo
+    url: arazzo/rigetti-provision-endpoint-and-engage-workflow.yml
+    name: Rigetti Provision Endpoint and Engage
+  - type: Arazzo
+    url: arazzo/rigetti-reservation-readiness-check-workflow.yml
+    name: Rigetti Reservation Readiness Check
   - type: Portal
     url: https://www.rigetti.com
-  - type: SignUp
+  - type: Signup
     url: https://qcs.rigetti.com/
     name: Quantum Cloud Services Sign-in
   - type: Documentation
@@ -188,49 +179,49 @@ common:
   - type: GitHubOrganization
     url: https://github.com/rigetti
     name: rigetti on GitHub
-  - type: SDK
+  - type: SDKs
     url: https://github.com/rigetti/pyquil
     name: pyQuil — Python library for Quil
-  - type: SDK
+  - type: SDKs
     url: https://github.com/rigetti/qcs-sdk-rust
     name: qcs-sdk-rust — Rust SDK for QCS
-  - type: SDK
+  - type: SDKs
     url: https://github.com/rigetti/qcs-sdk-rust/tree/main/crates/python
     name: qcs-sdk-python — Python bindings to qcs-sdk-rust
-  - type: SDK
+  - type: SDKs
     url: https://github.com/rigetti/qcs-sdk-c
     name: qcs-sdk-c — C SDK for QCS
-  - type: SDK
+  - type: SDKs
     url: https://github.com/rigetti/qcs-api-client-rust
     name: qcs-api-client-rust — REST + gRPC clients
-  - type: SDK
+  - type: SDKs
     url: https://github.com/rigetti/qcs-api-client-python
     name: qcs-api-client-python — Python REST API client
-  - type: SDK
+  - type: SDKs
     url: https://github.com/rigetti/quil-rs
     name: quil-rs — Quil parser and program builder
-  - type: SDK
+  - type: SDKs
     url: https://github.com/rigetti/qiskit-rigetti
     name: qiskit-rigetti — Qiskit provider
-  - type: SDK
+  - type: SDKs
     url: https://github.com/rigetti/pyquil-for-azure-quantum
     name: pyquil-for-azure-quantum
-  - type: SDK
+  - type: SDKs
     url: https://github.com/rigetti/qcs-sdk-qir
     name: qcs-sdk-qir — Quantum Intermediate Representation compiler
-  - type: Tool
+  - type: Tools
     url: https://github.com/rigetti/qcs-cli
     name: qcs-cli — Quantum Cloud Services CLI
-  - type: Tool
+  - type: Tools
     url: https://github.com/rigetti/quilc
     name: quilc — Quil compiler
-  - type: Tool
+  - type: Tools
     url: https://github.com/rigetti/qvm
     name: qvm — Quantum Virtual Machine
-  - type: Tool
+  - type: Tools
     url: https://github.com/rigetti/rpcq
     name: rpcq — RPC framework for QCS
-  - type: Tool
+  - type: Tools
     url: https://github.com/rigetti/rigetti-resource-estimation
     name: Rigetti Resource Estimation (RRE)
   - type: CodeExamples
