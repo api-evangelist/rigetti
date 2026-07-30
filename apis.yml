@@ -1,91 +1,288 @@
 aid: rigetti
 url: https://raw.githubusercontent.com/api-evangelist/rigetti/refs/heads/main/apis.yml
 apis:
-  - aid: rigetti:rigetti-qcs-api
-    name: Rigetti QCS API
-    tags:
-      - Quantum Computing
-      - Quantum Cloud Services
-      - QCS
-      - Account Management
-      - QPU Access
-      - Reservations
-      - Billing
-    humanURL: https://docs.api.qcs.rigetti.com/
-    baseURL: https://api.qcs.rigetti.com
-    properties:
-      - url: https://docs.api.qcs.rigetti.com/
-        type: Documentation
-      - url: https://docs.rigetti.com/qcs/references/qcs-api
-        type: Documentation
-      - url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
-        type: Documentation
-      - url: openapi/rigetti-qcs-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/rigetti-quantum-processor-schema.json
-        type: JSONSchema
-      - url: json-schema/rigetti-reservation-schema.json
-        type: JSONSchema
-      - url: json-ld/rigetti-context.jsonld
-        type: JSONLD
-      - url: https://github.com/rigetti/qcs-api-client-rust
-        type: SDKs
-        name: Rust API Client
-      - url: https://github.com/rigetti/qcs-api-client-python
-        type: SDKs
-        name: Python API Client
-    description: >-
-      The Rigetti Quantum Cloud Services (QCS) HTTP API is the OpenAPI-specified REST surface for managing accounts,
-      groups, users, billing, reservations, endpoints, engagements, and discovering quantum processor metadata including
-      Instruction Set Architecture (ISA) and calibration. Authentication is OAuth2 (JWT bearer) issued via Okta. The API
-      follows Google API Improvement Proposals (AIP) and is paired with a gRPC API for quantum program translation and
-      controller execution against the QPU.
-  - aid: rigetti:rigetti-qcs-translation-service
-    name: Rigetti QCS Translation Service (gRPC)
-    tags:
-      - Quantum Computing
-      - QCS
-      - Translation
-      - Compilation
-      - Quil
-      - gRPC
-    humanURL: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
-    properties:
-      - url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
-        type: Documentation
-      - url: https://github.com/rigetti/qcs-api-client-rust/tree/main/qcs-api-client-grpc/proto/translation
-        type: ProtocolBuffers
-        name: Translation service proto definitions
-      - url: https://github.com/rigetti/qcs-api-client-rust
-        type: SDKs
-    description: >-
-      gRPC Translation service that compiles native Quil programs into encrypted Controller Jobs for execution on a
-      Rigetti QPU. Operations include TranslateQuilToEncryptedControllerJob and
-      GetQuantumProcessorQuilCalibrationProgram. Authenticated with the same JWT bearer token used by the QCS HTTP API
-      and consumed via qcs-sdk-rust/qcs-sdk-python or the Rust qcs-api-client-grpc crate.
-  - aid: rigetti:rigetti-qcs-controller-service
-    name: Rigetti QCS Controller Service (gRPC)
-    tags:
-      - Quantum Computing
-      - QCS
-      - Execution
-      - Controller
-      - Jobs
-      - gRPC
-    humanURL: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
-    properties:
-      - url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
-        type: Documentation
-      - url: https://github.com/rigetti/qcs-api-client-rust/tree/main/qcs-api-client-grpc/proto/controller
-        type: ProtocolBuffers
-        name: Controller service proto definitions
-      - url: https://github.com/rigetti/qcs-api-client-rust
-        type: SDKs
-    description: >-
-      gRPC Controller service that executes encrypted Controller Jobs on a Rigetti QPU endpoint and returns measurement
-      (readout) results. Operations include ExecuteControllerJob, BatchExecuteControllerJobs, GetControllerJobResults,
-      CancelControllerJobs, and GetControllerJobStatus. Used through qcs-sdk-rust / qcs-sdk-python after obtaining a
-      CreateEngagement token from the QCS HTTP API.
+- aid: rigetti:rigetti-qcs-translation-service
+  name: Rigetti QCS Translation Service (gRPC)
+  tags:
+  - Quantum Computing
+  - QCS
+  - Translation
+  - Compilation
+  - Quil
+  - gRPC
+  humanURL: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+  properties:
+  - url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+    type: Documentation
+  - url: >-
+      https://github.com/rigetti/qcs-api-client-rust/tree/main/qcs-api-client-grpc/proto/translation
+    type: ProtocolBuffers
+    name: Translation service proto definitions
+  - url: https://github.com/rigetti/qcs-api-client-rust
+    type: SDKs
+  description: >-
+    gRPC Translation service that compiles native Quil programs into encrypted Controller Jobs for execution
+    on a Rigetti QPU. Operations include TranslateQuilToEncryptedControllerJob and GetQuantumProcessorQuilCalibrationProgram.
+    Authenticated with the same JWT bearer token used by the QCS HTTP API and consumed via qcs-sdk-rust/qcs-sdk-python
+    or the Rust qcs-api-client-grpc crate.
+- aid: rigetti:rigetti-qcs-controller-service
+  name: Rigetti QCS Controller Service (gRPC)
+  tags:
+  - Quantum Computing
+  - QCS
+  - Execution
+  - Controller
+  - Jobs
+  - gRPC
+  humanURL: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+  properties:
+  - url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+    type: Documentation
+  - url: >-
+      https://github.com/rigetti/qcs-api-client-rust/tree/main/qcs-api-client-grpc/proto/controller
+    type: ProtocolBuffers
+    name: Controller service proto definitions
+  - url: https://github.com/rigetti/qcs-api-client-rust
+    type: SDKs
+  description: >-
+    gRPC Controller service that executes encrypted Controller Jobs on a Rigetti QPU endpoint and returns
+    measurement (readout) results. Operations include ExecuteControllerJob, BatchExecuteControllerJobs,
+    GetControllerJobResults, CancelControllerJobs, and GetControllerJobStatus. Used through qcs-sdk-rust
+    / qcs-sdk-python after obtaining a CreateEngagement token from the QCS HTTP API.
+- aid: rigetti:rigetti-account-api
+  name: Rigetti Computing account API
+  description: The account API from Rigetti Computing — 22 operation(s) for account.
+  humanURL: https://docs.api.qcs.rigetti.com/
+  baseURL: https://api.qcs.rigetti.com
+  tags:
+  - account
+  properties:
+  - type: OpenAPI
+    url: openapi/rigetti-account-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.qcs.rigetti.com/
+  - type: Documentation
+    url: https://docs.rigetti.com/qcs/references/qcs-api
+  - type: Documentation
+    url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+  - type: JSONSchema
+    url: json-schema/rigetti-quantum-processor-schema.json
+  - type: JSONSchema
+    url: json-schema/rigetti-reservation-schema.json
+  - type: JSONLD
+    url: json-ld/rigetti-context.jsonld
+  - type: SDKs
+    url: https://github.com/rigetti/qcs-api-client-rust
+  - type: SDKs
+    url: https://github.com/rigetti/qcs-api-client-python
+- aid: rigetti:rigetti-authentication-api
+  name: Rigetti Computing authentication API
+  description: The authentication API from Rigetti Computing — 4 operation(s) for authentication.
+  humanURL: https://docs.api.qcs.rigetti.com/
+  baseURL: https://api.qcs.rigetti.com
+  tags:
+  - authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/rigetti-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.qcs.rigetti.com/
+  - type: Documentation
+    url: https://docs.rigetti.com/qcs/references/qcs-api
+  - type: Documentation
+    url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+  - type: JSONSchema
+    url: json-schema/rigetti-quantum-processor-schema.json
+  - type: JSONSchema
+    url: json-schema/rigetti-reservation-schema.json
+  - type: JSONLD
+    url: json-ld/rigetti-context.jsonld
+  - type: SDKs
+    url: https://github.com/rigetti/qcs-api-client-rust
+  - type: SDKs
+    url: https://github.com/rigetti/qcs-api-client-python
+- aid: rigetti:rigetti-clientapplications-api
+  name: Rigetti Computing clientApplications API
+  description: Check for the latest SDK versions.
+  humanURL: https://docs.api.qcs.rigetti.com/
+  baseURL: https://api.qcs.rigetti.com
+  tags:
+  - clientApplications
+  properties:
+  - type: OpenAPI
+    url: openapi/rigetti-clientapplications-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.qcs.rigetti.com/
+  - type: Documentation
+    url: https://docs.rigetti.com/qcs/references/qcs-api
+  - type: Documentation
+    url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+  - type: JSONSchema
+    url: json-schema/rigetti-quantum-processor-schema.json
+  - type: JSONSchema
+    url: json-schema/rigetti-reservation-schema.json
+  - type: JSONLD
+    url: json-ld/rigetti-context.jsonld
+  - type: SDKs
+    url: https://github.com/rigetti/qcs-api-client-rust
+  - type: SDKs
+    url: https://github.com/rigetti/qcs-api-client-python
+- aid: rigetti:rigetti-endpoints-api
+  name: Rigetti Computing endpoints API
+  description: The Endpoint is the means of access to a Quantum Processor.
+  humanURL: https://docs.api.qcs.rigetti.com/
+  baseURL: https://api.qcs.rigetti.com
+  tags:
+  - endpoints
+  properties:
+  - type: OpenAPI
+    url: openapi/rigetti-endpoints-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.qcs.rigetti.com/
+  - type: Documentation
+    url: https://docs.rigetti.com/qcs/references/qcs-api
+  - type: Documentation
+    url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+  - type: JSONSchema
+    url: json-schema/rigetti-quantum-processor-schema.json
+  - type: JSONSchema
+    url: json-schema/rigetti-reservation-schema.json
+  - type: JSONLD
+    url: json-ld/rigetti-context.jsonld
+  - type: SDKs
+    url: https://github.com/rigetti/qcs-api-client-rust
+  - type: SDKs
+    url: https://github.com/rigetti/qcs-api-client-python
+- aid: rigetti:rigetti-engagements-api
+  name: Rigetti Computing engagements API
+  description: The Engagement is the authorization mechanism for access to the Quantum Processor.
+  humanURL: https://docs.api.qcs.rigetti.com/
+  baseURL: https://api.qcs.rigetti.com
+  tags:
+  - engagements
+  properties:
+  - type: OpenAPI
+    url: openapi/rigetti-engagements-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.qcs.rigetti.com/
+  - type: Documentation
+    url: https://docs.rigetti.com/qcs/references/qcs-api
+  - type: Documentation
+    url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+  - type: JSONSchema
+    url: json-schema/rigetti-quantum-processor-schema.json
+  - type: JSONSchema
+    url: json-schema/rigetti-reservation-schema.json
+  - type: JSONLD
+    url: json-ld/rigetti-context.jsonld
+  - type: SDKs
+    url: https://github.com/rigetti/qcs-api-client-rust
+  - type: SDKs
+    url: https://github.com/rigetti/qcs-api-client-python
+- aid: rigetti:rigetti-healthcheck-api
+  name: Rigetti Computing Healthcheck API
+  description: The Healthcheck API from Rigetti Computing — 1 operation(s) for healthcheck.
+  humanURL: https://docs.api.qcs.rigetti.com/
+  baseURL: https://api.qcs.rigetti.com
+  tags:
+  - Healthcheck
+  properties:
+  - type: OpenAPI
+    url: openapi/rigetti-healthcheck-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.qcs.rigetti.com/
+  - type: Documentation
+    url: https://docs.rigetti.com/qcs/references/qcs-api
+  - type: Documentation
+    url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+  - type: JSONSchema
+    url: json-schema/rigetti-quantum-processor-schema.json
+  - type: JSONSchema
+    url: json-schema/rigetti-reservation-schema.json
+  - type: JSONLD
+    url: json-ld/rigetti-context.jsonld
+  - type: SDKs
+    url: https://github.com/rigetti/qcs-api-client-rust
+  - type: SDKs
+    url: https://github.com/rigetti/qcs-api-client-python
+- aid: rigetti:rigetti-quantumprocessors-api
+  name: Rigetti Computing quantumProcessors API
+  description: The Quantum Processor is the heart of the Rigetti services.
+  humanURL: https://docs.api.qcs.rigetti.com/
+  baseURL: https://api.qcs.rigetti.com
+  tags:
+  - quantumProcessors
+  properties:
+  - type: OpenAPI
+    url: openapi/rigetti-quantumprocessors-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.qcs.rigetti.com/
+  - type: Documentation
+    url: https://docs.rigetti.com/qcs/references/qcs-api
+  - type: Documentation
+    url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+  - type: JSONSchema
+    url: json-schema/rigetti-quantum-processor-schema.json
+  - type: JSONSchema
+    url: json-schema/rigetti-reservation-schema.json
+  - type: JSONLD
+    url: json-ld/rigetti-context.jsonld
+  - type: SDKs
+    url: https://github.com/rigetti/qcs-api-client-rust
+  - type: SDKs
+    url: https://github.com/rigetti/qcs-api-client-python
+- aid: rigetti:rigetti-reservations-api
+  name: Rigetti Computing reservations API
+  description: Find existing time on a Rigetti QPU and reserve it.
+  humanURL: https://docs.api.qcs.rigetti.com/
+  baseURL: https://api.qcs.rigetti.com
+  tags:
+  - reservations
+  properties:
+  - type: OpenAPI
+    url: openapi/rigetti-reservations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.qcs.rigetti.com/
+  - type: Documentation
+    url: https://docs.rigetti.com/qcs/references/qcs-api
+  - type: Documentation
+    url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+  - type: JSONSchema
+    url: json-schema/rigetti-quantum-processor-schema.json
+  - type: JSONSchema
+    url: json-schema/rigetti-reservation-schema.json
+  - type: JSONLD
+    url: json-ld/rigetti-context.jsonld
+  - type: SDKs
+    url: https://github.com/rigetti/qcs-api-client-rust
+  - type: SDKs
+    url: https://github.com/rigetti/qcs-api-client-python
+- aid: rigetti:rigetti-rigetti-qcs-api-api
+  name: Rigetti Computing Rigetti QCS API API
+  description: The Rigetti QCS API API from Rigetti Computing — 2 operation(s) for rigetti qcs api.
+  humanURL: https://docs.api.qcs.rigetti.com/
+  baseURL: https://api.qcs.rigetti.com
+  tags:
+  - Rigetti QCS API
+  properties:
+  - type: OpenAPI
+    url: openapi/rigetti-rigetti-qcs-api-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.qcs.rigetti.com/
+  - type: Documentation
+    url: https://docs.rigetti.com/qcs/references/qcs-api
+  - type: Documentation
+    url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+  - type: JSONSchema
+    url: json-schema/rigetti-quantum-processor-schema.json
+  - type: JSONSchema
+    url: json-schema/rigetti-reservation-schema.json
+  - type: JSONLD
+    url: json-ld/rigetti-context.jsonld
+  - type: SDKs
+    url: https://github.com/rigetti/qcs-api-client-rust
+  - type: SDKs
+    url: https://github.com/rigetti/qcs-api-client-python
 name: Rigetti Computing
 description: >-
   Rigetti Computing (Nasdaq, RGTI) is a Berkeley, California-based quantum computing company building superconducting
@@ -110,7 +307,20 @@ tags:
   - Quantum-Classical Hybrid
   - Public Company
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/rigetti.png
 access: 3rd-Party
 common:
   - type: AgenticAccess
