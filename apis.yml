@@ -1,5 +1,6 @@
 aid: rigetti
 url: https://raw.githubusercontent.com/api-evangelist/rigetti/refs/heads/main/apis.yml
+specificationVersion: '0.23'
 apis:
 - aid: rigetti:rigetti-qcs-translation-service
   name: Rigetti QCS Translation Service (gRPC)
