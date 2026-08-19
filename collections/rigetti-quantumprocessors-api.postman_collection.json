@@ -1,0 +1,1093 @@
+{
+  "item": [
+    {
+      "id": "60c6fbc4-811c-4763-9205-562e3badfe48",
+      "name": "quantumProcessors",
+      "description": {
+        "content": "The Quantum Processor is the heart of the Rigetti services.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "500b3180-c5a1-438c-88fa-709237a8234a",
+          "name": "Get Quantum Processor",
+          "request": {
+            "name": "Get Quantum Processor",
+            "description": {
+              "content": "Retrieve a single `QuantumProcessor` by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "quantumProcessors",
+                ":quantum_processor_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quantum_processor_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "adb91928-f9ca-4c20-b562-c062ead33491",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "quantumProcessors",
+                    ":quantum_processor_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quantum_processor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c3e7693-0d88-4d4b-a2a8-80813b369bdc",
+              "name": "User-provided data failed validation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "quantumProcessors",
+                    ":quantum_processor_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quantum_processor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"in\": \"path\",\n  \"message\": \"string\",\n  \"path\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ebf46fbc-ee53-4027-ab2b-5d012f9459db",
+              "name": "Some other error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "quantumProcessors",
+                    ":quantum_processor_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quantum_processor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"body\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"body\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35848fc4-083e-481d-81fc-676edae7db13",
+          "name": "List Quantum Processors",
+          "request": {
+            "name": "List Quantum Processors",
+            "description": {
+              "content": "List the [`QuantumProcessor`]s that this user is authorized to access.\n\nIf no auth token is provided, only public processors will be returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "quantumProcessors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "10"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "044f3b48-d249-4e5b-8aa2-5b9ccc5127d3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "quantumProcessors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"quantumProcessors\": [\n    {\n      \"id\": \"string\"\n    },\n    {\n      \"id\": \"string\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd0512be-f692-4344-a47e-c2a652ca87e3",
+              "name": "User-provided data failed validation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "quantumProcessors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"in\": \"path\",\n  \"message\": \"string\",\n  \"path\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8a52734-f021-400f-a4ce-b4f6d0cecadb",
+              "name": "Some other error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "quantumProcessors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c3752fc-6831-485d-8472-3b876f893f00",
+          "name": "Get Quantum Processor Accessors",
+          "request": {
+            "name": "Get Quantum Processor Accessors",
+            "description": {
+              "content": "Retrieve a single `QuantumProcessor` by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "quantumProcessors",
+                ":quantum_processor_id",
+                "accessors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quantum_processor_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0093ad4c-9f82-4795-a646-339169f9b1e8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "quantumProcessors",
+                    ":quantum_processor_id",
+                    "accessors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quantum_processor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"accessors\": [\n    {\n      \"accessType\": \"gateway.v1\",\n      \"live\": true,\n      \"url\": \"string\",\n      \"id\": \"string\",\n      \"rank\": 6293\n    },\n    {\n      \"accessType\": \"direct.v1\",\n      \"live\": true,\n      \"url\": \"string\",\n      \"id\": \"string\",\n      \"rank\": 3523\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8bfddbad-e5bb-42c8-90bf-f620b4ab6a18",
+              "name": "User-provided data failed validation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "quantumProcessors",
+                    ":quantum_processor_id",
+                    "accessors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quantum_processor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"in\": \"path\",\n  \"message\": \"string\",\n  \"path\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9d9f20d-f78e-4903-9eec-1cf0f5b2ffa8",
+              "name": "Some other error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "quantumProcessors",
+                    ":quantum_processor_id",
+                    "accessors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quantum_processor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "228f4bb6-bff7-4062-8946-df87d9d252e4",
+          "name": "Get Instruction Set Architecture",
+          "request": {
+            "name": "Get Instruction Set Architecture",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "quantumProcessors",
+                ":quantum_processor_id",
+                "instructionSetArchitecture"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quantum_processor_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e2680ad2-d492-4a74-9896-66c9c808db40",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "quantumProcessors",
+                    ":quantum_processor_id",
+                    "instructionSetArchitecture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quantum_processor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"architecture\": {\n    \"family\": \"None\",\n    \"nodes\": [\n      {\n        \"node_id\": 2160\n      },\n      {\n        \"node_id\": 9735\n      }\n    ],\n    \"edges\": [\n      {\n        \"node_ids\": [\n          3320,\n          9274\n        ]\n      },\n      {\n        \"node_ids\": [\n          8993,\n          4340\n        ]\n      }\n    ]\n  },\n  \"instructions\": [\n    {\n      \"name\": \"string\",\n      \"parameters\": [\n        {\n          \"name\": \"string\"\n        },\n        {\n          \"name\": \"string\"\n        }\n      ],\n      \"sites\": [\n        {\n          \"node_ids\": [\n            7488\n          ],\n          \"characteristics\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"node_ids\": [\n            3073\n          ],\n          \"characteristics\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"characteristics\": [\n        {\n          \"name\": \"string\",\n          \"value\": 5172.509381255552,\n          \"timestamp\": \"1985-05-13T10:56:52.992Z\",\n          \"error\": 7997.642763800684,\n          \"node_ids\": [\n            1349\n          ],\n          \"parameter_values\": [\n            4701.270399513028,\n            3186.522063029694\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"value\": 2555.216508376482,\n          \"timestamp\": \"1960-01-20T01:54:02.687Z\",\n          \"error\": 2399.811679842323,\n          \"node_ids\": [\n            8971\n          ],\n          \"parameter_values\": [\n            1034.217148920903,\n            2288.4730523031794\n          ]\n        }\n      ],\n      \"node_count\": 1833\n    },\n    {\n      \"name\": \"string\",\n      \"parameters\": [\n        {\n          \"name\": \"string\"\n        },\n        {\n          \"name\": \"string\"\n        }\n      ],\n      \"sites\": [\n        {\n          \"node_ids\": [\n            1494\n          ],\n          \"characteristics\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"node_ids\": [\n            1086\n          ],\n          \"characteristics\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"characteristics\": [\n        {\n          \"name\": \"string\",\n          \"value\": 8166.873949152376,\n          \"timestamp\": \"2022-05-18T11:24:31.945Z\",\n          \"error\": 6365.549703562674,\n          \"node_ids\": [\n            5649\n          ],\n          \"parameter_values\": [\n            125.0648321187553,\n            9656.86961174208\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"value\": 5608.131529560081,\n          \"timestamp\": \"2008-08-26T02:54:50.283Z\",\n          \"error\": 7516.36393356798,\n          \"node_ids\": [\n            7815\n          ],\n          \"parameter_values\": [\n            883.7196429398452,\n            6455.281468917195\n          ]\n        }\n      ],\n      \"node_count\": 2155\n    }\n  ],\n  \"benchmarks\": [\n    {\n      \"name\": \"string\",\n      \"parameters\": [\n        {\n          \"name\": \"string\"\n        },\n        {\n          \"name\": \"string\"\n        }\n      ],\n      \"sites\": [\n        {\n          \"node_ids\": [\n            1661\n          ],\n          \"characteristics\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"node_ids\": [\n            7129\n          ],\n          \"characteristics\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"characteristics\": [\n        {\n          \"name\": \"string\",\n          \"value\": 5945.930187932737,\n          \"timestamp\": \"2005-02-27T12:47:27.809Z\",\n          \"error\": 4308.327761991299,\n          \"node_ids\": [\n            4717\n          ],\n          \"parameter_values\": [\n            9036.994430325984,\n            3370.1622556918164\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"value\": 9339.570521619224,\n          \"timestamp\": \"1965-05-14T16:57:38.984Z\",\n          \"error\": 4341.827424963674,\n          \"node_ids\": [\n            6204\n          ],\n          \"parameter_values\": [\n            8324.252999171098,\n            6933.339805996895\n          ]\n        }\n      ],\n      \"node_count\": 7960\n    },\n    {\n      \"name\": \"string\",\n      \"parameters\": [\n        {\n          \"name\": \"string\"\n        },\n        {\n          \"name\": \"string\"\n        }\n      ],\n      \"sites\": [\n        {\n          \"node_ids\": [\n            7915\n          ],\n          \"characteristics\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"node_ids\": [\n            1109\n          ],\n          \"characteristics\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"characteristics\": [\n        {\n          \"name\": \"string\",\n          \"value\": 5916.872642566175,\n          \"timestamp\": \"2018-11-27T00:47:55.547Z\",\n          \"error\": 4218.8663403842975,\n          \"node_ids\": [\n            6468\n          ],\n          \"parameter_values\": [\n            9729.416982408062,\n            3959.807646775635\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"value\": 9294.190732351271,\n          \"timestamp\": \"1995-11-30T21:07:30.207Z\",\n          \"error\": 9538.944224468269,\n          \"node_ids\": [\n            8490\n          ],\n          \"parameter_values\": [\n            2240.260147174187,\n            3227.141926548889\n          ]\n        }\n      ],\n      \"node_count\": 2065\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "316b998b-7542-4793-9f03-be13941d55f7",
+              "name": "User-provided data failed validation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "quantumProcessors",
+                    ":quantum_processor_id",
+                    "instructionSetArchitecture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quantum_processor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"in\": \"path\",\n  \"message\": \"string\",\n  \"path\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d84a1e9-41ed-4bbd-b1cc-b238a9fad0ae",
+              "name": "Some other error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "quantumProcessors",
+                    ":quantum_processor_id",
+                    "instructionSetArchitecture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quantum_processor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b235846e-b4bf-420e-a840-1706dac83810",
+          "name": "List Instruction Set Architectures",
+          "request": {
+            "name": "List Instruction Set Architectures",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "instructionSetArchitectures"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "5"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "89dadb4c-68e7-4461-9cfc-02563226def9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "instructionSetArchitectures"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"instructionSetArchitectures\": [\n    {\n      \"name\": \"string\",\n      \"architecture\": {\n        \"family\": \"Full\",\n        \"nodes\": [\n          {\n            \"node_id\": 7293\n          },\n          {\n            \"node_id\": 8077\n          }\n        ],\n        \"edges\": [\n          {\n            \"node_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      \"instructions\": [\n        {\n          \"name\": \"string\",\n          \"parameters\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"sites\": [\n            {\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"characteristics\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"characteristics\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"characteristics\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"node_count\": 6610\n        },\n        {\n          \"name\": \"string\",\n          \"parameters\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"sites\": [\n            {\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"characteristics\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"characteristics\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"characteristics\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"node_count\": 7662\n        }\n      ],\n      \"benchmarks\": [\n        {\n          \"name\": \"string\",\n          \"parameters\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"sites\": [\n            {\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"characteristics\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"characteristics\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"characteristics\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"node_count\": 2959\n        },\n        {\n          \"name\": \"string\",\n          \"parameters\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"sites\": [\n            {\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"characteristics\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"characteristics\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"characteristics\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"node_count\": 2505\n        }\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"architecture\": {\n        \"family\": \"None\",\n        \"nodes\": [\n          {\n            \"node_id\": 722\n          },\n          {\n            \"node_id\": 3837\n          }\n        ],\n        \"edges\": [\n          {\n            \"node_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      \"instructions\": [\n        {\n          \"name\": \"string\",\n          \"parameters\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"sites\": [\n            {\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"characteristics\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"characteristics\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"characteristics\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"node_count\": 7081\n        },\n        {\n          \"name\": \"string\",\n          \"parameters\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"sites\": [\n            {\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"characteristics\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"characteristics\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"characteristics\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"node_count\": 6526\n        }\n      ],\n      \"benchmarks\": [\n        {\n          \"name\": \"string\",\n          \"parameters\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"sites\": [\n            {\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"characteristics\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"characteristics\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"characteristics\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"node_count\": 9525\n        },\n        {\n          \"name\": \"string\",\n          \"parameters\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"sites\": [\n            {\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"characteristics\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"characteristics\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"characteristics\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"error\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"node_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameter_values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"node_count\": 6480\n        }\n      ]\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c976d8f-20ea-4146-869f-1cb3c98409cd",
+              "name": "User-provided data failed validation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "instructionSetArchitectures"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"in\": \"path\",\n  \"message\": \"string\",\n  \"path\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c445342-15c9-4da9-9d78-b60354e39a3e",
+              "name": "Some other error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "instructionSetArchitectures"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "5"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.qcs.rigetti.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6be0cc60-a5c7-411a-b0ef-0b97fbc807bd",
+    "name": "Rigetti QCS account quantumProcessors API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# Introduction\n\nThis is the documentation for the Rigetti QCS HTTP API.\n\nYou can find out more about Rigetti at [https://rigetti.com](https://rigetti.com), and also\ninteract with QCS via the web at [https://qcs.rigetti.com](https://qcs.rigetti.com).\n\nThis API is documented in **OpenAPI format** and so is compatible with the dozens of\nlanguage-specific client generators available\n[here](https://github.com/OpenAPITools/openapi-generator) and elsewhere on the web.\n\n# Principles\n\nThis API follows REST design principles where appropriate, and otherwise an HTTP RPC paradigm.\nWe adhere to the Google [API Improvement Proposals](https://google.aip.dev/general) where\nreasonable to provide a consistent, intuitive developer experience. HTTP response codes match\ntheir specifications, and error messages fit a common format.\n\n# Authentication\n\nAll access to the QCS API requires OAuth2 authentication provided by Okta. You can request\naccess [here](https://www.rigetti.com/get-quantum). Once you have a user account, you can download\nyour access token from QCS [here](https://qcs.rigetti.com/auth/token). \n\nThat access token is valid for 24 hours after issuance. The value of `access_token` within the\nJSON file is the token used for authentication (don't use the entire JSON file).\n\nAuthenticate requests using the `Authorization` header and a `Bearer` prefix:\n\n```\ncurl --header \"Authorization: Bearer eyJraW...Iow\"\n```\n\n# Quantum Processor Access\n\nAccess to the quantum processors themselves is not yet provided directly by this HTTP API, but\nis instead performed over ZeroMQ/[rpcq](https://github.com/rigetti/rpcq). Until that changes,\nwe suggest using [pyquil](https://github.com/rigetti/pyquil) to build and execute quantum\nprograms via the Legacy API.\n\n# Legacy API\n\nOur legacy HTTP API remains accessible at https://forest-server.qcs.rigetti.com, and it shares\na source of truth with this API's services. You can use either service with the same user\naccount and means of authentication. We strongly recommend using the API documented here, as the\nlegacy API is on the path to deprecation.\n\n\nContact Support:\n Email: support@rigetti.com",
+      "type": "text/plain"
+    }
+  }
+}

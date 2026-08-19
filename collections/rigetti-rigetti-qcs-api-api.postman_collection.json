@@ -1,0 +1,210 @@
+{
+  "item": [
+    {
+      "id": "2ca34d51-3a0e-432a-b369-52c1e50d22da",
+      "name": "Rigetti QCS API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "536b0d44-497e-4722-bf9f-c1f5a9997457",
+          "name": "Get Health",
+          "request": {
+            "name": "Get Health",
+            "description": {
+              "content": "Retrieve the health status of the API",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d6f4850c-ffc5-47e8-85e3-5ff7006f79cc",
+              "name": "Critical services are healthy.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"PASS\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "550bced8-2711-4637-9a8c-ed0322181a0f",
+          "name": "Health Check",
+          "request": {
+            "name": "Health Check",
+            "description": {
+              "content": "Endpoint to return a status 200 for load balancer health checks",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4cdcf831-f72c-4ee8-a2fa-49c0915a5afc",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d5fcecd-8a52-474c-8a2c-72a0c42b5b81",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"in\": \"query\",\n  \"message\": \"string\",\n  \"path\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.qcs.rigetti.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "eacb59c3-fcee-4671-b4f7-24d32d1ddfc1",
+    "name": "Rigetti QCS account Rigetti QCS API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# Introduction\n\nThis is the documentation for the Rigetti QCS HTTP API.\n\nYou can find out more about Rigetti at [https://rigetti.com](https://rigetti.com), and also\ninteract with QCS via the web at [https://qcs.rigetti.com](https://qcs.rigetti.com).\n\nThis API is documented in **OpenAPI format** and so is compatible with the dozens of\nlanguage-specific client generators available\n[here](https://github.com/OpenAPITools/openapi-generator) and elsewhere on the web.\n\n# Principles\n\nThis API follows REST design principles where appropriate, and otherwise an HTTP RPC paradigm.\nWe adhere to the Google [API Improvement Proposals](https://google.aip.dev/general) where\nreasonable to provide a consistent, intuitive developer experience. HTTP response codes match\ntheir specifications, and error messages fit a common format.\n\n# Authentication\n\nAll access to the QCS API requires OAuth2 authentication provided by Okta. You can request\naccess [here](https://www.rigetti.com/get-quantum). Once you have a user account, you can download\nyour access token from QCS [here](https://qcs.rigetti.com/auth/token). \n\nThat access token is valid for 24 hours after issuance. The value of `access_token` within the\nJSON file is the token used for authentication (don't use the entire JSON file).\n\nAuthenticate requests using the `Authorization` header and a `Bearer` prefix:\n\n```\ncurl --header \"Authorization: Bearer eyJraW...Iow\"\n```\n\n# Quantum Processor Access\n\nAccess to the quantum processors themselves is not yet provided directly by this HTTP API, but\nis instead performed over ZeroMQ/[rpcq](https://github.com/rigetti/rpcq). Until that changes,\nwe suggest using [pyquil](https://github.com/rigetti/pyquil) to build and execute quantum\nprograms via the Legacy API.\n\n# Legacy API\n\nOur legacy HTTP API remains accessible at https://forest-server.qcs.rigetti.com, and it shares\na source of truth with this API's services. You can use either service with the same user\naccount and means of authentication. We strongly recommend using the API documented here, as the\nlegacy API is on the path to deprecation.\n\n\nContact Support:\n Email: support@rigetti.com",
+      "type": "text/plain"
+    }
+  }
+}

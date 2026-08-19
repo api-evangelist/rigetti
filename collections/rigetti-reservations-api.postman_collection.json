@@ -1,0 +1,2118 @@
+{
+  "item": [
+    {
+      "id": "ab781c11-9e7c-4650-8e5c-01be0b52b97f",
+      "name": "reservations",
+      "description": {
+        "content": "Find existing time on a Rigetti QPU and reserve it.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a2bffb9a-6166-488c-9ebe-03efc738c52d",
+          "name": "Get Quantum Processor Calendar",
+          "request": {
+            "name": "Get Quantum Processor Calendar",
+            "description": {
+              "content": "Get calendar details for the requested quantum processor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "calendars",
+                ":quantumProcessorId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quantumProcessorId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8a6eb2ff-5db2-4645-99f3-92e67af0a0ab",
+              "name": "Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "calendars",
+                    ":quantumProcessorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quantumProcessorId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"maintenanceICal\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f8a2b81-f416-4db1-99f4-4feb24108e87",
+              "name": "Client not authorized to complete request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "calendars",
+                    ":quantumProcessorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quantumProcessorId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "654ae86a-ab42-4a1b-a2d2-ee0d7856bc9a",
+              "name": "The requested quantum processor does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "calendars",
+                    ":quantumProcessorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quantumProcessorId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "102d59de-15e6-4ad7-9119-49f6bf2f7545",
+          "name": "List Group Reservations",
+          "request": {
+            "name": "List Group Reservations",
+            "description": {
+              "content": "List existing reservations for the requested group.\n\nAvailable filter fields include:\n\n* `startTime` - timestamp\n* `endTime` - timestamp\n* `createdTime` - timestamp\n* `price` - integer\n* `quantumProcessorId` - string\n\nAvailable order fields include:\n\n* `startTime` - timestamp\n* `endTime` - timestamp\n* `createdTime` - timestamp\n* `price` - integer\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "groups",
+                ":groupName",
+                "reservations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "An opaque token that can be appended to a request query to retrieve the next page of results. Empty if there are no more results to retrieve."
+                },
+                {
+                  "disabled": false,
+                  "key": "showDeleted",
+                  "value": "false",
+                  "description": "If you wish to include deleted (or cancelled) resources in your response, include `showDeleted=true`."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupName",
+                  "description": "(Required) URL encoded name of group for which to retrieve reservations."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3332efbe-d00f-480b-b13d-3c1ec1c481b9",
+              "name": "Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "groups",
+                    ":groupName",
+                    "reservations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showDeleted",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupName",
+                      "description": "(Required) URL encoded name of group for which to retrieve reservations."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reservations\": [\n    {\n      \"accountId\": \"string\",\n      \"accountType\": \"user\",\n      \"id\": 9840,\n      \"userId\": \"string\",\n      \"quantumProcessorId\": \"string\",\n      \"startTime\": \"1955-10-15T19:14:25.121Z\",\n      \"endTime\": \"1953-03-28T18:49:14.922Z\",\n      \"createdTime\": \"1968-07-15T22:50:13.300Z\",\n      \"price\": 2257,\n      \"cancellationBillingInvoiceItemId\": \"string\",\n      \"cancelled\": true,\n      \"createdByAccountId\": \"string\",\n      \"createdByAccountType\": \"user\",\n      \"creationBillingInvoiceItemId\": \"string\",\n      \"notes\": \"string\",\n      \"updatedTime\": \"1965-06-20T10:36:17.634Z\"\n    },\n    {\n      \"accountId\": \"string\",\n      \"accountType\": \"user\",\n      \"id\": 7509,\n      \"userId\": \"string\",\n      \"quantumProcessorId\": \"string\",\n      \"startTime\": \"1986-01-07T07:19:23.658Z\",\n      \"endTime\": \"1951-07-01T07:43:20.943Z\",\n      \"createdTime\": \"2008-09-18T11:21:23.947Z\",\n      \"price\": 9343,\n      \"cancellationBillingInvoiceItemId\": \"string\",\n      \"cancelled\": false,\n      \"createdByAccountId\": \"string\",\n      \"createdByAccountType\": \"user\",\n      \"creationBillingInvoiceItemId\": \"string\",\n      \"notes\": \"string\",\n      \"updatedTime\": \"1965-03-11T12:06:01.934Z\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "983aed67-4737-4e5b-b6a8-37520026539d",
+              "name": "Request authentication failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "groups",
+                    ":groupName",
+                    "reservations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showDeleted",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupName",
+                      "description": "(Required) URL encoded name of group for which to retrieve reservations."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1351247d-2751-4664-846c-867ab3b2fc36",
+              "name": "Request validation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "groups",
+                    ":groupName",
+                    "reservations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showDeleted",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupName",
+                      "description": "(Required) URL encoded name of group for which to retrieve reservations."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0ad880f-eafa-4ca4-9774-dffade3b9b16",
+          "name": "List Reservations",
+          "request": {
+            "name": "List Reservations",
+            "description": {
+              "content": "List existing reservations for the authenticated user,\nor a target user when specifying `X-QCS-ACCOUNT-ID` and `X-QCS-ACCOUNT-TYPE`\nheaders.\n\nAvailable filter fields include:\n\n* `startTime` - timestamp\n* `endTime` - timestamp\n* `createdTime` - timestamp\n* `price` - integer\n* `cancelled` - boolean (deprecated, use `showDeleted` parameter)\n* `quantumProcessorId` - string\n\nAvailable order fields include:\n\n* `startTime` - timestamp\n* `endTime` - timestamp\n* `createdTime` - timestamp\n* `price` - integer\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "reservations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "An opaque token that can be appended to a request query to retrieve the next page of results. Empty if there are no more results to retrieve."
+                },
+                {
+                  "disabled": false,
+                  "key": "showDeleted",
+                  "value": "false",
+                  "description": "If you wish to include deleted (or cancelled) resources in your response, include `showDeleted=true`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Used to specify a subject account ID for a request.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                "key": "X-QCS-ACCOUNT-ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Used to specify the subject account's type for a request\nin conjunction with the X-QCS-ACCOUNT-ID header.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                "key": "X-QCS-ACCOUNT-TYPE",
+                "value": "user"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "26baafca-4632-4a41-8564-95c4df370489",
+              "name": "Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reservations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showDeleted",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used to specify a subject account ID for a request.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                    "key": "X-QCS-ACCOUNT-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used to specify the subject account's type for a request\nin conjunction with the X-QCS-ACCOUNT-ID header.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                    "key": "X-QCS-ACCOUNT-TYPE",
+                    "value": "user"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reservations\": [\n    {\n      \"accountId\": \"<string>\",\n      \"accountType\": \"user\",\n      \"id\": 781,\n      \"userId\": \"string\",\n      \"quantumProcessorId\": \"string\",\n      \"startTime\": \"1975-07-14T18:36:03.738Z\",\n      \"endTime\": \"1950-11-07T14:25:41.933Z\",\n      \"createdTime\": \"1947-09-11T15:11:32.803Z\",\n      \"price\": 2352,\n      \"cancellationBillingInvoiceItemId\": \"string\",\n      \"cancelled\": false,\n      \"createdByAccountId\": \"<string>\",\n      \"createdByAccountType\": \"user\",\n      \"creationBillingInvoiceItemId\": \"string\",\n      \"notes\": \"string\",\n      \"updatedTime\": \"2002-03-31T15:43:30.384Z\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"accountType\": \"user\",\n      \"id\": 9410,\n      \"userId\": \"string\",\n      \"quantumProcessorId\": \"string\",\n      \"startTime\": \"2024-05-10T12:25:02.942Z\",\n      \"endTime\": \"1992-10-30T06:23:31.690Z\",\n      \"createdTime\": \"1990-12-13T14:04:14.907Z\",\n      \"price\": 9517,\n      \"cancellationBillingInvoiceItemId\": \"string\",\n      \"cancelled\": false,\n      \"createdByAccountId\": \"<string>\",\n      \"createdByAccountType\": \"user\",\n      \"creationBillingInvoiceItemId\": \"string\",\n      \"notes\": \"string\",\n      \"updatedTime\": \"1987-11-12T02:26:34.337Z\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28c3eb7e-04bb-4957-a4cb-c1b6e56f2593",
+              "name": "Request authentication failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reservations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showDeleted",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used to specify a subject account ID for a request.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                    "key": "X-QCS-ACCOUNT-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used to specify the subject account's type for a request\nin conjunction with the X-QCS-ACCOUNT-ID header.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                    "key": "X-QCS-ACCOUNT-TYPE",
+                    "value": "user"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f967c280-02ab-4bba-ae28-3adc05a2ce3b",
+              "name": "Request validation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reservations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showDeleted",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used to specify a subject account ID for a request.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                    "key": "X-QCS-ACCOUNT-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used to specify the subject account's type for a request\nin conjunction with the X-QCS-ACCOUNT-ID header.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                    "key": "X-QCS-ACCOUNT-TYPE",
+                    "value": "user"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0babcee8-ef12-48e9-885e-6599b19cbdaa",
+          "name": "Create Reservation",
+          "request": {
+            "name": "Create Reservation",
+            "description": {
+              "content": "Create a new reservation.\n\nThe following precedence applies when specifying the reservation subject account\nID and type:\n* request body `accountId` field, or if unset then `X-QCS-ACCOUNT-ID` header,\nor if unset then requesting user's ID.\n* request body `accountType` field, or if unset then `X-QCS-ACCOUNT-TYPE`\nheader, or if unset then \"user\" type.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "reservations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Used to specify a subject account ID for a request.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                "key": "X-QCS-ACCOUNT-ID",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Used to specify the subject account's type for a request\nin conjunction with the X-QCS-ACCOUNT-ID header.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                "key": "X-QCS-ACCOUNT-TYPE",
+                "value": "user"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantumProcessorId\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"accountId\": \"<string>\",\n  \"accountType\": \"user\",\n  \"notes\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e3ddda04-8777-4404-8901-555903599d71",
+              "name": "Reservation successfully created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reservations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used to specify a subject account ID for a request.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                    "key": "X-QCS-ACCOUNT-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used to specify the subject account's type for a request\nin conjunction with the X-QCS-ACCOUNT-ID header.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                    "key": "X-QCS-ACCOUNT-TYPE",
+                    "value": "user"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"quantumProcessorId\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"accountId\": \"<string>\",\n  \"accountType\": \"user\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountId\": \"<string>\",\n  \"accountType\": \"user\",\n  \"id\": 7557,\n  \"userId\": \"string\",\n  \"quantumProcessorId\": \"string\",\n  \"startTime\": \"2015-05-27T06:28:18.428Z\",\n  \"endTime\": \"2023-01-29T15:24:22.384Z\",\n  \"createdTime\": \"1988-06-09T12:06:51.489Z\",\n  \"price\": 3581,\n  \"cancellationBillingInvoiceItemId\": \"string\",\n  \"cancelled\": true,\n  \"createdByAccountId\": \"<string>\",\n  \"createdByAccountType\": \"user\",\n  \"creationBillingInvoiceItemId\": \"string\",\n  \"notes\": \"string\",\n  \"updatedTime\": \"2011-11-21T00:13:40.016Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0429a8ab-2bce-49f5-a18d-dcae32ed060b",
+              "name": "Request authentication failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reservations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used to specify a subject account ID for a request.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                    "key": "X-QCS-ACCOUNT-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used to specify the subject account's type for a request\nin conjunction with the X-QCS-ACCOUNT-ID header.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                    "key": "X-QCS-ACCOUNT-TYPE",
+                    "value": "user"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"quantumProcessorId\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"accountId\": \"<string>\",\n  \"accountType\": \"user\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95ef6ac6-9cae-4ecd-b901-d9a87ec4fc94",
+              "name": "Insufficient payment to book reservation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reservations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used to specify a subject account ID for a request.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                    "key": "X-QCS-ACCOUNT-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used to specify the subject account's type for a request\nin conjunction with the X-QCS-ACCOUNT-ID header.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                    "key": "X-QCS-ACCOUNT-TYPE",
+                    "value": "user"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"quantumProcessorId\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"accountId\": \"<string>\",\n  \"accountType\": \"user\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d39328a7-d96f-4f92-a90c-b023e8aecd6c",
+              "name": "User not authorized to make the requested reservation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reservations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used to specify a subject account ID for a request.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                    "key": "X-QCS-ACCOUNT-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used to specify the subject account's type for a request\nin conjunction with the X-QCS-ACCOUNT-ID header.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                    "key": "X-QCS-ACCOUNT-TYPE",
+                    "value": "user"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"quantumProcessorId\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"accountId\": \"<string>\",\n  \"accountType\": \"user\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e057938-b060-4005-bd7e-f9bd923e91c1",
+              "name": "The requested reservation is unavailable.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reservations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used to specify a subject account ID for a request.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                    "key": "X-QCS-ACCOUNT-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used to specify the subject account's type for a request\nin conjunction with the X-QCS-ACCOUNT-ID header.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                    "key": "X-QCS-ACCOUNT-TYPE",
+                    "value": "user"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"quantumProcessorId\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"accountId\": \"<string>\",\n  \"accountType\": \"user\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d61ca42a-b9c4-4f52-972e-197e10722419",
+              "name": "Request validation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reservations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used to specify a subject account ID for a request.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                    "key": "X-QCS-ACCOUNT-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Used to specify the subject account's type for a request\nin conjunction with the X-QCS-ACCOUNT-ID header.\nDoes not take precedence over a corresponding request body field when one\nis present.\n",
+                    "key": "X-QCS-ACCOUNT-TYPE",
+                    "value": "user"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"quantumProcessorId\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"accountId\": \"<string>\",\n  \"accountType\": \"user\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a309ed2-a6b9-48fc-9f8a-da41dc2c854e",
+          "name": "Get Reservation",
+          "request": {
+            "name": "Get Reservation",
+            "description": {
+              "content": "Find an existing reservation by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "reservations",
+                ":reservationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "reservationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2101b761-4ce0-435a-8a7a-646d1a518a22",
+              "name": "Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reservations",
+                    ":reservationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reservationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountId\": \"<string>\",\n  \"accountType\": \"user\",\n  \"id\": 7557,\n  \"userId\": \"string\",\n  \"quantumProcessorId\": \"string\",\n  \"startTime\": \"2015-05-27T06:28:18.428Z\",\n  \"endTime\": \"2023-01-29T15:24:22.384Z\",\n  \"createdTime\": \"1988-06-09T12:06:51.489Z\",\n  \"price\": 3581,\n  \"cancellationBillingInvoiceItemId\": \"string\",\n  \"cancelled\": true,\n  \"createdByAccountId\": \"<string>\",\n  \"createdByAccountType\": \"user\",\n  \"creationBillingInvoiceItemId\": \"string\",\n  \"notes\": \"string\",\n  \"updatedTime\": \"2011-11-21T00:13:40.016Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3c833aa-49a4-4cf7-8857-52be118bb0a5",
+              "name": "Request authentication failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reservations",
+                    ":reservationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reservationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9b47193-c269-4683-acab-c682f70c9e7f",
+              "name": "User not authorized to retrieve reservation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reservations",
+                    ":reservationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reservationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f881fb71-e6b1-497c-a0d9-925c56dbedcc",
+              "name": "Requested reservation does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reservations",
+                    ":reservationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reservationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7db1fc50-fc96-4240-a3fa-b012e779a255",
+          "name": "Delete Reservation",
+          "request": {
+            "name": "Delete Reservation",
+            "description": {
+              "content": "Cancel an existing reservation for the user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "reservations",
+                ":reservationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "reservationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2163bee6-6b14-49b5-8a40-61b8953d414c",
+              "name": "Reservation successfully cancelled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reservations",
+                    ":reservationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reservationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountId\": \"<string>\",\n  \"accountType\": \"user\",\n  \"id\": 7557,\n  \"userId\": \"string\",\n  \"quantumProcessorId\": \"string\",\n  \"startTime\": \"2015-05-27T06:28:18.428Z\",\n  \"endTime\": \"2023-01-29T15:24:22.384Z\",\n  \"createdTime\": \"1988-06-09T12:06:51.489Z\",\n  \"price\": 3581,\n  \"cancellationBillingInvoiceItemId\": \"string\",\n  \"cancelled\": true,\n  \"createdByAccountId\": \"<string>\",\n  \"createdByAccountType\": \"user\",\n  \"creationBillingInvoiceItemId\": \"string\",\n  \"notes\": \"string\",\n  \"updatedTime\": \"2011-11-21T00:13:40.016Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4a16d43-db9e-468e-ab50-2c9e634fd305",
+              "name": "Request authentication failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reservations",
+                    ":reservationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reservationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d064857-eef4-424b-813b-5e5bd74e5598",
+              "name": "User not authorized to delete reservation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reservations",
+                    ":reservationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reservationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da3b0599-b5ed-4488-bc21-ee6b2fa39a75",
+              "name": "Requested reservation does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reservations",
+                    ":reservationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reservationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29b3cf4c-16c6-457b-96ca-655a785fbd2f",
+          "name": "Find Available Reservations",
+          "request": {
+            "name": "Find Available Reservations",
+            "description": {
+              "content": "List currently available reservations on the requested Rigetti quantum computer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "reservations:findAvailable"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "An opaque token that can be appended to a request query to retrieve the next page of results. Empty if there are no more results to retrieve."
+                },
+                {
+                  "disabled": false,
+                  "key": "quantumProcessorId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "startTimeFrom",
+                  "value": "<dateTime>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "duration",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "982d8b0f-112b-4d68-9239-b420b8f9eb1b",
+              "name": "Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reservations:findAvailable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "quantumProcessorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimeFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "duration",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"availableReservations\": [\n    {\n      \"quantumProcessorId\": \"string\",\n      \"startTime\": \"1964-04-07T13:14:07.494Z\",\n      \"endTime\": \"2015-02-12T15:25:08.190Z\",\n      \"duration\": \"string\",\n      \"price\": 4742\n    },\n    {\n      \"quantumProcessorId\": \"string\",\n      \"startTime\": \"2017-09-14T23:19:15.725Z\",\n      \"endTime\": \"1981-09-07T07:44:37.620Z\",\n      \"duration\": \"string\",\n      \"price\": 1824\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7eab8ce-1710-400f-8fe4-39b4010dc48c",
+              "name": "Request authentication failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reservations:findAvailable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "quantumProcessorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimeFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "duration",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f5bd5d0-aa0f-487c-b5fe-c5be2b156222",
+              "name": "Request validation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reservations:findAvailable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "quantumProcessorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTimeFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "duration",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.qcs.rigetti.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a64df22c-de2a-446f-b506-df9f4505cfb7",
+    "name": "Rigetti QCS account reservations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# Introduction\n\nThis is the documentation for the Rigetti QCS HTTP API.\n\nYou can find out more about Rigetti at [https://rigetti.com](https://rigetti.com), and also\ninteract with QCS via the web at [https://qcs.rigetti.com](https://qcs.rigetti.com).\n\nThis API is documented in **OpenAPI format** and so is compatible with the dozens of\nlanguage-specific client generators available\n[here](https://github.com/OpenAPITools/openapi-generator) and elsewhere on the web.\n\n# Principles\n\nThis API follows REST design principles where appropriate, and otherwise an HTTP RPC paradigm.\nWe adhere to the Google [API Improvement Proposals](https://google.aip.dev/general) where\nreasonable to provide a consistent, intuitive developer experience. HTTP response codes match\ntheir specifications, and error messages fit a common format.\n\n# Authentication\n\nAll access to the QCS API requires OAuth2 authentication provided by Okta. You can request\naccess [here](https://www.rigetti.com/get-quantum). Once you have a user account, you can download\nyour access token from QCS [here](https://qcs.rigetti.com/auth/token). \n\nThat access token is valid for 24 hours after issuance. The value of `access_token` within the\nJSON file is the token used for authentication (don't use the entire JSON file).\n\nAuthenticate requests using the `Authorization` header and a `Bearer` prefix:\n\n```\ncurl --header \"Authorization: Bearer eyJraW...Iow\"\n```\n\n# Quantum Processor Access\n\nAccess to the quantum processors themselves is not yet provided directly by this HTTP API, but\nis instead performed over ZeroMQ/[rpcq](https://github.com/rigetti/rpcq). Until that changes,\nwe suggest using [pyquil](https://github.com/rigetti/pyquil) to build and execute quantum\nprograms via the Legacy API.\n\n# Legacy API\n\nOur legacy HTTP API remains accessible at https://forest-server.qcs.rigetti.com, and it shares\na source of truth with this API's services. You can use either service with the same user\naccount and means of authentication. We strongly recommend using the API documented here, as the\nlegacy API is on the path to deprecation.\n\n\nContact Support:\n Email: support@rigetti.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,420 @@
+{
+  "item": [
+    {
+      "id": "59a5d969-930b-4965-abf1-9b373ac0290d",
+      "name": "clientApplications",
+      "description": {
+        "content": "Check for the latest SDK versions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c64f7681-2483-429e-98cf-9ad1582e1504",
+          "name": "List Client Applications",
+          "request": {
+            "name": "List Client Applications",
+            "description": {
+              "content": "List supported clients of Rigetti system components along with their latest and minimum supported versions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "clientApplications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b3a8427d-130a-4339-851d-c658759ce91b",
+              "name": "Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "clientApplications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"clientApplications\": [\n    {\n      \"latestVersion\": \"string\",\n      \"name\": \"string\",\n      \"supported\": false,\n      \"detailsUri\": \"string\",\n      \"links\": [\n        {\n          \"url\": \"string\",\n          \"checksumDescription\": {\n            \"headerName\": \"string\",\n            \"type\": \"md5\"\n          },\n          \"platform\": \"string\"\n        },\n        {\n          \"url\": \"string\",\n          \"checksumDescription\": {\n            \"headerName\": \"string\",\n            \"type\": \"md5\"\n          },\n          \"platform\": \"string\"\n        }\n      ],\n      \"minimumVersion\": \"string\"\n    },\n    {\n      \"latestVersion\": \"string\",\n      \"name\": \"string\",\n      \"supported\": false,\n      \"detailsUri\": \"string\",\n      \"links\": [\n        {\n          \"url\": \"string\",\n          \"checksumDescription\": {\n            \"headerName\": \"string\",\n            \"type\": \"md5\"\n          },\n          \"platform\": \"string\"\n        },\n        {\n          \"url\": \"string\",\n          \"checksumDescription\": {\n            \"headerName\": \"string\",\n            \"type\": \"md5\"\n          },\n          \"platform\": \"string\"\n        }\n      ],\n      \"minimumVersion\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "adb26330-43c2-4a93-8274-a08b7b4a51d4",
+          "name": "Get Client Application",
+          "request": {
+            "name": "Get Client Application",
+            "description": {
+              "content": "Get details of a specific Rigetti system component along with its latest and minimum supported versions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "clientApplications",
+                ":clientApplicationName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientApplicationName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bb5a9df6-45ae-4d21-9e3e-8308e39f2764",
+              "name": "Request completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "clientApplications",
+                    ":clientApplicationName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientApplicationName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"latestVersion\": \"string\",\n  \"name\": \"string\",\n  \"supported\": true,\n  \"detailsUri\": \"string\",\n  \"links\": [\n    {\n      \"url\": \"string\",\n      \"checksumDescription\": {\n        \"headerName\": \"string\",\n        \"type\": \"md5\"\n      },\n      \"platform\": \"string\"\n    },\n    {\n      \"url\": \"string\",\n      \"checksumDescription\": {\n        \"headerName\": \"string\",\n        \"type\": \"md5\"\n      },\n      \"platform\": \"string\"\n    }\n  ],\n  \"minimumVersion\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ba837e2-af32-42d7-9540-f95508b2d944",
+              "name": "The requested client application does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "clientApplications",
+                    ":clientApplicationName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientApplicationName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"body\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"body\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0a13ee5-14b2-4c80-a2fb-ff1bddc550fb",
+          "name": "Check Client Application",
+          "request": {
+            "name": "Check Client Application",
+            "description": {
+              "content": "Check the requested client application version against the latest and minimum version.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "clientApplications:check"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aa71ff76-4658-4712-9d08-588bfe5e52bf",
+              "name": "Successfully checked Forest versions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "clientApplications:check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"isLatestVersion\": false,\n  \"isUpdateRequired\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc51dfe3-6fa4-4cc1-bbd2-2dee259cf964",
+              "name": "Requested component does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "clientApplications:check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7a9cded-74c3-4d39-9b87-3b4f121199dd",
+              "name": "Request validation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "clientApplications:check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\",\n  \"validationErrors\": [\n    {\n      \"in\": \"header\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"in\": \"query\",\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.qcs.rigetti.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c2e85ae7-e24d-4778-906a-ca29b4da435f",
+    "name": "Rigetti QCS account clientApplications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# Introduction\n\nThis is the documentation for the Rigetti QCS HTTP API.\n\nYou can find out more about Rigetti at [https://rigetti.com](https://rigetti.com), and also\ninteract with QCS via the web at [https://qcs.rigetti.com](https://qcs.rigetti.com).\n\nThis API is documented in **OpenAPI format** and so is compatible with the dozens of\nlanguage-specific client generators available\n[here](https://github.com/OpenAPITools/openapi-generator) and elsewhere on the web.\n\n# Principles\n\nThis API follows REST design principles where appropriate, and otherwise an HTTP RPC paradigm.\nWe adhere to the Google [API Improvement Proposals](https://google.aip.dev/general) where\nreasonable to provide a consistent, intuitive developer experience. HTTP response codes match\ntheir specifications, and error messages fit a common format.\n\n# Authentication\n\nAll access to the QCS API requires OAuth2 authentication provided by Okta. You can request\naccess [here](https://www.rigetti.com/get-quantum). Once you have a user account, you can download\nyour access token from QCS [here](https://qcs.rigetti.com/auth/token). \n\nThat access token is valid for 24 hours after issuance. The value of `access_token` within the\nJSON file is the token used for authentication (don't use the entire JSON file).\n\nAuthenticate requests using the `Authorization` header and a `Bearer` prefix:\n\n```\ncurl --header \"Authorization: Bearer eyJraW...Iow\"\n```\n\n# Quantum Processor Access\n\nAccess to the quantum processors themselves is not yet provided directly by this HTTP API, but\nis instead performed over ZeroMQ/[rpcq](https://github.com/rigetti/rpcq). Until that changes,\nwe suggest using [pyquil](https://github.com/rigetti/pyquil) to build and execute quantum\nprograms via the Legacy API.\n\n# Legacy API\n\nOur legacy HTTP API remains accessible at https://forest-server.qcs.rigetti.com, and it shares\na source of truth with this API's services. You can use either service with the same user\naccount and means of authentication. We strongly recommend using the API documented here, as the\nlegacy API is on the path to deprecation.\n\n\nContact Support:\n Email: support@rigetti.com",
+      "type": "text/plain"
+    }
+  }
+}
