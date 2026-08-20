@@ -33,6 +33,13 @@ apis:
   - QCS
   - Execution
   - Controller
+  - Job
+  - gRPC
+  tags_raw:
+  - Quantum Computing
+  - QCS
+  - Execution
+  - Controller
   - Jobs
   - gRPC
   humanURL: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
@@ -56,6 +63,8 @@ apis:
   humanURL: https://docs.api.qcs.rigetti.com/
   baseURL: https://api.qcs.rigetti.com
   tags:
+  - Account
+  tags_raw:
   - account
   properties:
   - type: OpenAPI
@@ -82,6 +91,8 @@ apis:
   humanURL: https://docs.api.qcs.rigetti.com/
   baseURL: https://api.qcs.rigetti.com
   tags:
+  - Authentication
+  tags_raw:
   - authentication
   properties:
   - type: OpenAPI
@@ -107,7 +118,8 @@ apis:
   description: Check for the latest SDK versions.
   humanURL: https://docs.api.qcs.rigetti.com/
   baseURL: https://api.qcs.rigetti.com
-  tags:
+  tags: []
+  tags_raw:
   - clientApplications
   properties:
   - type: OpenAPI
@@ -133,7 +145,8 @@ apis:
   description: The Endpoint is the means of access to a Quantum Processor.
   humanURL: https://docs.api.qcs.rigetti.com/
   baseURL: https://api.qcs.rigetti.com
-  tags:
+  tags: []
+  tags_raw:
   - endpoints
   properties:
   - type: OpenAPI
@@ -160,6 +173,8 @@ apis:
   humanURL: https://docs.api.qcs.rigetti.com/
   baseURL: https://api.qcs.rigetti.com
   tags:
+  - Engagements
+  tags_raw:
   - engagements
   properties:
   - type: OpenAPI
@@ -186,6 +201,8 @@ apis:
   humanURL: https://docs.api.qcs.rigetti.com/
   baseURL: https://api.qcs.rigetti.com
   tags:
+  - Health Check
+  tags_raw:
   - Healthcheck
   properties:
   - type: OpenAPI
@@ -211,7 +228,8 @@ apis:
   description: The Quantum Processor is the heart of the Rigetti services.
   humanURL: https://docs.api.qcs.rigetti.com/
   baseURL: https://api.qcs.rigetti.com
-  tags:
+  tags: []
+  tags_raw:
   - quantumProcessors
   properties:
   - type: OpenAPI
@@ -238,6 +256,8 @@ apis:
   humanURL: https://docs.api.qcs.rigetti.com/
   baseURL: https://api.qcs.rigetti.com
   tags:
+  - Reservations
+  tags_raw:
   - reservations
   properties:
   - type: OpenAPI
