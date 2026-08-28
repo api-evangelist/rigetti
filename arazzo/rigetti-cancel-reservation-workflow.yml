@@ -13,8 +13,8 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: qcsApi
-  url: ../openapi/rigetti-qcs-api-openapi.yml
+- name: reservationsApi
+  url: ../openapi/rigetti-reservations-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: cancel-reservation

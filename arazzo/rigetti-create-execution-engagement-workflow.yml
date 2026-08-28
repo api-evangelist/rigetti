@@ -15,8 +15,14 @@ info:
     be read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: qcsApi
-  url: ../openapi/rigetti-qcs-api-openapi.yml
+- name: endpointsApi
+  url: ../openapi/rigetti-endpoints-api-openapi.yml
+  type: openapi
+- name: engagementsApi
+  url: ../openapi/rigetti-engagements-api-openapi.yml
+  type: openapi
+- name: quantumprocessorsApi
+  url: ../openapi/rigetti-quantumprocessors-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: create-execution-engagement

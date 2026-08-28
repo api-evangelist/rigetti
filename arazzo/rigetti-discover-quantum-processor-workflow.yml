@@ -12,8 +12,8 @@ info:
     without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: qcsApi
-  url: ../openapi/rigetti-qcs-api-openapi.yml
+- name: quantumprocessorsApi
+  url: ../openapi/rigetti-quantumprocessors-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: discover-quantum-processor
