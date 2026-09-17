@@ -27,13 +27,15 @@ apis:
   properties:
   - url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
     type: Documentation
-  - url: https://github.com/rigetti/qcs-api-client-rust/tree/main/qcs-api-client-grpc/proto/translation
+  - url: >-
+      https://github.com/rigetti/qcs-api-client-rust/tree/main/qcs-api-client-grpc/proto/translation
     type: ProtocolBuffers
     name: Translation service proto definitions
   - url: https://github.com/rigetti/qcs-api-client-rust
     type: SDKs
-  description: gRPC Translation service that compiles native Quil programs into encrypted Controller Jobs
-    for execution on a Rigetti QPU. Operations include TranslateQuilToEncryptedControllerJob and GetQuantumProcessorQuilCalibrationProgram.
+  description: >-
+    gRPC Translation service that compiles native Quil programs into encrypted Controller Jobs for execution
+    on a Rigetti QPU. Operations include TranslateQuilToEncryptedControllerJob and GetQuantumProcessorQuilCalibrationProgram.
     Authenticated with the same JWT bearer token used by the QCS HTTP API and consumed via qcs-sdk-rust/qcs-sdk-python
     or the Rust qcs-api-client-grpc crate.
 - aid: rigetti:rigetti-qcs-controller-service
@@ -56,13 +58,15 @@ apis:
   properties:
   - url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
     type: Documentation
-  - url: https://github.com/rigetti/qcs-api-client-rust/tree/main/qcs-api-client-grpc/proto/controller
+  - url: >-
+      https://github.com/rigetti/qcs-api-client-rust/tree/main/qcs-api-client-grpc/proto/controller
     type: ProtocolBuffers
     name: Controller service proto definitions
   - url: https://github.com/rigetti/qcs-api-client-rust
     type: SDKs
-  description: gRPC Controller service that executes encrypted Controller Jobs on a Rigetti QPU endpoint
-    and returns measurement (readout) results. Operations include ExecuteControllerJob, BatchExecuteControllerJobs,
+  description: >-
+    gRPC Controller service that executes encrypted Controller Jobs on a Rigetti QPU endpoint and returns
+    measurement (readout) results. Operations include ExecuteControllerJob, BatchExecuteControllerJobs,
     GetControllerJobResults, CancelControllerJobs, and GetControllerJobStatus. Used through qcs-sdk-rust
     / qcs-sdk-python after obtaining a CreateEngagement token from the QCS HTTP API.
 - aid: rigetti:rigetti-account-api
@@ -203,34 +207,6 @@ apis:
     url: https://github.com/rigetti/qcs-api-client-rust
   - type: SDKs
     url: https://github.com/rigetti/qcs-api-client-python
-- aid: rigetti:rigetti-healthcheck-api
-  name: Rigetti Computing Healthcheck API
-  description: The Healthcheck API from Rigetti Computing — 1 operation(s) for healthcheck.
-  humanURL: https://docs.api.qcs.rigetti.com/
-  baseURL: https://api.qcs.rigetti.com
-  tags:
-  - Health Check
-  tags_raw:
-  - Healthcheck
-  properties:
-  - type: OpenAPI
-    url: openapi/rigetti-healthcheck-api-openapi.yml
-  - type: Documentation
-    url: https://docs.api.qcs.rigetti.com/
-  - type: Documentation
-    url: https://docs.rigetti.com/qcs/references/qcs-api
-  - type: Documentation
-    url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
-  - type: JSONSchema
-    url: json-schema/rigetti-quantum-processor-schema.json
-  - type: JSONSchema
-    url: json-schema/rigetti-reservation-schema.json
-  - type: JSONLD
-    url: json-ld/rigetti-context.jsonld
-  - type: SDKs
-    url: https://github.com/rigetti/qcs-api-client-rust
-  - type: SDKs
-    url: https://github.com/rigetti/qcs-api-client-python
 - aid: rigetti:rigetti-quantumprocessors-api
   name: Rigetti Computing quantumProcessors API
   description: The Quantum Processor is the heart of the Rigetti services.
@@ -296,6 +272,32 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/rigetti-rigetti-qcs-api-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.qcs.rigetti.com/
+  - type: Documentation
+    url: https://docs.rigetti.com/qcs/references/qcs-api
+  - type: Documentation
+    url: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+  - type: JSONSchema
+    url: json-schema/rigetti-quantum-processor-schema.json
+  - type: JSONSchema
+    url: json-schema/rigetti-reservation-schema.json
+  - type: JSONLD
+    url: json-ld/rigetti-context.jsonld
+  - type: SDKs
+    url: https://github.com/rigetti/qcs-api-client-rust
+  - type: SDKs
+    url: https://github.com/rigetti/qcs-api-client-python
+- aid: rigetti:rigetti-health-check-api
+  name: Rigetti Computing Health Check API
+  description: The Health Check API from Rigetti Computing — 1 operation(s) for health check.
+  humanURL: https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api
+  baseURL: https://api.qcs.rigetti.com
+  tags:
+  - Health Check
+  properties:
+  - type: OpenAPI
+    url: openapi/rigetti-health-check-api-openapi.yml
   - type: Documentation
     url: https://docs.api.qcs.rigetti.com/
   - type: Documentation
