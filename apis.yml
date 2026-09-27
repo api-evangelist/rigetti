@@ -70,7 +70,7 @@ apis:
     GetControllerJobResults, CancelControllerJobs, and GetControllerJobStatus. Used through qcs-sdk-rust
     / qcs-sdk-python after obtaining a CreateEngagement token from the QCS HTTP API.
 - aid: rigetti:rigetti-account-api
-  name: Rigetti Computing account API
+  name: Rigetti Computing Account API
   description: The account API from Rigetti Computing — 22 operation(s) for account.
   humanURL: https://docs.api.qcs.rigetti.com/
   baseURL: https://api.qcs.rigetti.com
@@ -98,7 +98,7 @@ apis:
   - type: SDKs
     url: https://github.com/rigetti/qcs-api-client-python
 - aid: rigetti:rigetti-authentication-api
-  name: Rigetti Computing authentication API
+  name: Rigetti Computing Authentication API
   description: The authentication API from Rigetti Computing — 4 operation(s) for authentication.
   humanURL: https://docs.api.qcs.rigetti.com/
   baseURL: https://api.qcs.rigetti.com
@@ -126,7 +126,7 @@ apis:
   - type: SDKs
     url: https://github.com/rigetti/qcs-api-client-python
 - aid: rigetti:rigetti-clientapplications-api
-  name: Rigetti Computing clientApplications API
+  name: Rigetti Computing Client Applications API
   description: Check for the latest SDK versions.
   humanURL: https://docs.api.qcs.rigetti.com/
   baseURL: https://api.qcs.rigetti.com
@@ -153,7 +153,7 @@ apis:
   - type: SDKs
     url: https://github.com/rigetti/qcs-api-client-python
 - aid: rigetti:rigetti-endpoints-api
-  name: Rigetti Computing endpoints API
+  name: Rigetti Computing Endpoints API
   description: The Endpoint is the means of access to a Quantum Processor.
   humanURL: https://docs.api.qcs.rigetti.com/
   baseURL: https://api.qcs.rigetti.com
@@ -180,7 +180,7 @@ apis:
   - type: SDKs
     url: https://github.com/rigetti/qcs-api-client-python
 - aid: rigetti:rigetti-engagements-api
-  name: Rigetti Computing engagements API
+  name: Rigetti Computing Engagements API
   description: The Engagement is the authorization mechanism for access to the Quantum Processor.
   humanURL: https://docs.api.qcs.rigetti.com/
   baseURL: https://api.qcs.rigetti.com
@@ -208,7 +208,7 @@ apis:
   - type: SDKs
     url: https://github.com/rigetti/qcs-api-client-python
 - aid: rigetti:rigetti-quantumprocessors-api
-  name: Rigetti Computing quantumProcessors API
+  name: Rigetti Computing Quantum Processors API
   description: The Quantum Processor is the heart of the Rigetti services.
   humanURL: https://docs.api.qcs.rigetti.com/
   baseURL: https://api.qcs.rigetti.com
@@ -235,7 +235,7 @@ apis:
   - type: SDKs
     url: https://github.com/rigetti/qcs-api-client-python
 - aid: rigetti:rigetti-reservations-api
-  name: Rigetti Computing reservations API
+  name: Rigetti Computing Reservations API
   description: Find existing time on a Rigetti QPU and reserve it.
   humanURL: https://docs.api.qcs.rigetti.com/
   baseURL: https://api.qcs.rigetti.com
