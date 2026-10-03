@@ -129,6 +129,27 @@ paths:
       - Authentication
 components:
   schemas:
+    AuthResetPasswordWithTokenRequest:
+      description: Token may be requested with AuthEmailPasswordResetToken.
+      properties:
+        newPassword:
+          type: string
+        token:
+          type: string
+      required:
+      - token
+      - newPassword
+      type: object
+    AuthResetPasswordRequest:
+      properties:
+        newPassword:
+          type: string
+        oldPassword:
+          type: string
+      required:
+      - oldPassword
+      - newPassword
+      type: object
     UserProfile:
       properties:
         email:
@@ -167,39 +188,12 @@ components:
       - message
       title: ValidationError
       type: object
-    AuthResetPasswordWithTokenRequest:
-      description: Token may be requested with AuthEmailPasswordResetToken.
-      properties:
-        newPassword:
-          type: string
-        token:
-          type: string
-      required:
-      - token
-      - newPassword
-      type: object
     AuthEmailPasswordResetTokenRequest:
       properties:
         email:
           type: string
       required:
       - email
-      type: object
-    User:
-      properties:
-        createdTime:
-          format: date-time
-          type: string
-        id:
-          type: integer
-        idpId:
-          type: string
-        profile:
-          $ref: '#/components/schemas/UserProfile'
-      required:
-      - id
-      - idpId
-      - createdTime
       type: object
     Error:
       properties:
@@ -223,15 +217,21 @@ components:
       - requestId
       title: Error
       type: object
-    AuthResetPasswordRequest:
+    User:
       properties:
-        newPassword:
+        createdTime:
+          format: date-time
           type: string
-        oldPassword:
+        id:
+          type: integer
+        idpId:
           type: string
+        profile:
+          $ref: '#/components/schemas/UserProfile'
       required:
-      - oldPassword
-      - newPassword
+      - id
+      - idpId
+      - createdTime
       type: object
   securitySchemes:
     JWTBearer:
