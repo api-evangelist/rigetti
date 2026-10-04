@@ -129,42 +129,12 @@ paths:
       - Authentication
 components:
   schemas:
-    AuthResetPasswordWithTokenRequest:
-      description: Token may be requested with AuthEmailPasswordResetToken.
-      properties:
-        newPassword:
-          type: string
-        token:
-          type: string
-      required:
-      - token
-      - newPassword
-      type: object
-    AuthResetPasswordRequest:
-      properties:
-        newPassword:
-          type: string
-        oldPassword:
-          type: string
-      required:
-      - oldPassword
-      - newPassword
-      type: object
-    UserProfile:
+    AuthEmailPasswordResetTokenRequest:
       properties:
         email:
           type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        organization:
-          type: string
       required:
       - email
-      - firstName
-      - lastName
-      - organization
       type: object
     ValidationError:
       properties:
@@ -188,12 +158,31 @@ components:
       - message
       title: ValidationError
       type: object
-    AuthEmailPasswordResetTokenRequest:
+    UserProfile:
       properties:
         email:
           type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        organization:
+          type: string
       required:
       - email
+      - firstName
+      - lastName
+      - organization
+      type: object
+    AuthResetPasswordRequest:
+      properties:
+        newPassword:
+          type: string
+        oldPassword:
+          type: string
+      required:
+      - oldPassword
+      - newPassword
       type: object
     Error:
       properties:
@@ -232,6 +221,17 @@ components:
       - id
       - idpId
       - createdTime
+      type: object
+    AuthResetPasswordWithTokenRequest:
+      description: Token may be requested with AuthEmailPasswordResetToken.
+      properties:
+        newPassword:
+          type: string
+        token:
+          type: string
+      required:
+      - token
+      - newPassword
       type: object
   securitySchemes:
     JWTBearer:
