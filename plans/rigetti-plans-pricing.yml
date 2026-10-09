@@ -1,3 +1,8 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (dated 2026-05-25 by the file itself), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
+generated: '2026-05-25'
 specification: API Commons Plans
 specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
@@ -136,3 +141,65 @@ notes: |
   Rigetti does not publish a public per-shot or per-second QPU price card on rigetti.com as of May 2026.
   Commercial reservations are sold per-engagement and tracked via the QCS billing API's invoice and balance
   endpoints. Free credits and academic access are extended via the "Get Quantum" application process.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - metered
+  - negotiated
+  units:
+  - compute
+  - object
+  - request
+  - seat
+  plans:
+  - name: QCS Reservation Access
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - other
+    periods:
+    - per-use
+  - name: QCS Onboarding
+    access: negotiated
+    model: negotiated
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Novera QPU (On-Premises)
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - other
+    periods:
+    - per-use
+  - name: Quantum Foundry Services
+    access: negotiated
+    model: negotiated
+    model_how: stated
+    units:
+    - object
+    periods:
+    - per-use
+  - name: AWS Braket — Rigetti device
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - other
+    - request
+    periods:
+    - per-use
+  - name: Microsoft Azure Quantum — Rigetti provider
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - compute
+    periods:
+    - per-use
