@@ -1,0 +1,60 @@
+edges:
+- partner_name: Azure Quantum (Microsoft)
+  partner: microsoft-quantum
+  partner_match: aggregator
+  type: marketplace
+  marketplace: microsoft-quantum
+  channel: distribution
+  relationship: distribution-channel
+  direction: third-party
+  evidence: https://learn.microsoft.com/en-us/azure/quantum/provider-rigetti
+  seller_name: Rigetti
+  devices:
+  - Rigetti Quantum Virtual Machine (QVM)
+  - Rigetti Cepheus-1-108Q
+  contract_reference:
+    register: Azure Quantum providers (learn.microsoft.com azure/quantum qc-target-list + provider pages)
+    spec_file: null
+    role: quantum-cloud-distribution
+    registered_name: Rigetti
+    matched_domain: rigetti.com
+    matched_by: domain+name-among-holders
+    domain_source: azure provider page own-site link
+    signal_note: selling QPU access through a quantum cloud is distribution, kept out of position shares
+    detected_by: sweep-quantum-computing.py
+    detected: '2026-10-20'
+  detected_by: sweep-quantum-computing.py
+  detected: '2026-10-20'
+- partner_name: QED-C (Quantum Economic Development Consortium)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://quantumconsortium.org/members/
+  category: quantum industry consortium
+  contract_reference:
+    register: QED-C members (quantumconsortium.org/members, Corporate)
+    standard: null
+    spec_file: null
+    role: qedc-member
+    registered_name: Rigetti
+    register_id: https://quantumconsortium.org/members/
+    member_class: Corporate
+    founding_member: true
+    matched_domain: rigetti.com
+    matched_by: domain+name-among-holders
+    signal_note: 'participation only: consortium membership; founding status is context, never counted'
+    detected_by: sweep-quantum-computing.py
+    detected: '2026-10-20'
+  detected_by: sweep-quantum-computing.py
+  first_seen: '2026-10-20'
+generated: '2026-10-20'
+method: searched
+source:
+- https://learn.microsoft.com/en-us/azure/quantum/qc-target-list
+- https://quantumconsortium.org/members/
+checked:
+- https://learn.microsoft.com/en-us/azure/quantum/qc-target-list
+- https://quantumconsortium.org/members/
