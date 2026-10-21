@@ -51,3 +51,33 @@
     detected: '2026-10-20'
   status: not-a-workflow
   arazzo: null
+- slug: rigetti-andreessen-horowitz-a16z
+  label: Andreessen Horowitz (a16z)
+  partner: a16z
+  partner_name: Andreessen Horowitz (a16z)
+  category: vc portfolio participation
+  type: register
+  channel: standard-directory
+  evidence: https://a16z.com/companies/rigetti-quantum-computing/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: a16z portfolio (a16z.com/portfolio/, the page's own data-companies JSON)
+    standard: null
+    spec_file: null
+    role: vc-portfolio-company
+    registered_name: Rigetti
+    register_id: https://a16z.com/companies/rigetti-quantum-computing/
+    register_country: null
+    register_website: https://rigetti.com
+    matched_domain: rigetti.com
+    matched_by: domain+name-among-holders
+    signal_note: 'participation only: the venture firm''s own published portfolio lists the company (investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-vc-portfolios.py
+    detected: '2026-10-21'
+    year: '2016'
+    status: Exits
+    sector: Bio + Health
+  status: not-a-workflow
+  arazzo: null
