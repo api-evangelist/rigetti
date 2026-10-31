@@ -1,4 +1,4 @@
-# Rigetti Computing (rigetti)
+# Rigetti Computing
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,163 +66,179 @@
 
 Rigetti Computing (Nasdaq, RGTI) is a Berkeley, California-based quantum computing company building superconducting quantum processors and the full-stack software needed to program and operate them. Founded in 2013 by Chad Rigetti, the company designs, manufactures, and operates multi-chip superconducting QPUs at its Fab-1 in Fremont, CA and offers cloud-based access through Quantum Cloud Services (QCS). Rigetti also sells the Novera QPU (9-qubit) for on-premises customers and provides Quantum Foundry Services for custom development. The current generation system Cepheus-1-108Q (107 qubits, deployed April 2026) is accessed via a hybrid REST + gRPC API surface, programmed using the open Quil instruction language, the pyQuil Python library, and the multi-language qcs-sdk (Rust core with Python bindings). Rigetti's hardware is also available indirectly through AWS Braket, Microsoft Azure Quantum, and as a Qiskit provider via qiskit-rigetti.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/rigetti/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/rigetti/refs/heads/main/apis.yml)
+**Areas:** Quantum Computing · Superconducting Qubits · Quantum Cloud Services · QCS · QPU · Quil · pyQuil · NISQ · Fault-Tolerant Quantum Computing · Quantum-Classical Hybrid · Public Company
 
-## Scope
+## Rigetti Computing on APIs.io
 
-- **Access:** 3rd-Party
+Everything profiled for Rigetti Computing is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/rigetti/](https://apis.io/providers/rigetti/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (11)
 
-- Quantum Computing
-- Superconducting Qubits
-- Quantum Cloud Services
-- QCS
-- QPU
-- Quil
-- pyQuil
-- NISQ
-- Fault-Tolerant Quantum Computing
-- Quantum-Classical Hybrid
-- Public Company
+- [Rigetti QCS Translation Service (gRPC)](https://apis.io/apis/rigetti/rigetti-qcs-translation-service/) — gRPC Translation service that compiles native Quil programs into encrypted Controller Jobs for execution on a Rigetti QPU. Operations include…
+- [Rigetti QCS Controller Service (gRPC)](https://apis.io/apis/rigetti/rigetti-qcs-controller-service/) — gRPC Controller service that executes encrypted Controller Jobs on a Rigetti QPU endpoint and returns measurement (readout) results. Operations include…
+- [Rigetti Computing Account API](https://apis.io/apis/rigetti/rigetti-account-api/) — The account API from Rigetti Computing — 22 operation(s) for account.
+- [Rigetti Computing Authentication API](https://apis.io/apis/rigetti/rigetti-authentication-api/) — The authentication API from Rigetti Computing — 4 operation(s) for authentication.
+- [Rigetti Computing Client Applications API](https://apis.io/apis/rigetti/rigetti-clientapplications-api/) — Check for the latest SDK versions.
+- [Rigetti Computing Endpoints API](https://apis.io/apis/rigetti/rigetti-endpoints-api/) — The Endpoint is the means of access to a Quantum Processor.
+- [Rigetti Computing Engagements API](https://apis.io/apis/rigetti/rigetti-engagements-api/) — The Engagement is the authorization mechanism for access to the Quantum Processor.
+- [Rigetti Computing Quantum Processors API](https://apis.io/apis/rigetti/rigetti-quantumprocessors-api/) — The Quantum Processor is the heart of the Rigetti services.
+- [Rigetti Computing Reservations API](https://apis.io/apis/rigetti/rigetti-reservations-api/) — Find existing time on a Rigetti QPU and reserve it.
+- [Rigetti Computing Rigetti QCS API](https://apis.io/apis/rigetti/rigetti-rigetti-qcs-api-api/) — The Rigetti QCS API API from Rigetti Computing — 2 operation(s) for rigetti qcs api.
+- [Rigetti Computing Health Check API](https://apis.io/apis/rigetti/rigetti-health-check-api/) — The Health Check API from Rigetti Computing — 1 operation(s) for health check.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-24
-- **Modified:** 2026-05-24
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Arazzo workflows (6)
 
-### Rigetti QCS API
+Multi-step workflows that chain operations into a business task.
 
-The Rigetti Quantum Cloud Services (QCS) HTTP API is the OpenAPI-specified REST surface for managing accounts, groups, users, billing, reservations, endpoints, engagements, and discovering quantum processor metadata including Instruction Set Architecture (ISA) and calibration. Authentication is OAuth2 (JWT bearer) issued via Okta. The API follows Google API Improvement Proposals (AIP) and is paired with a gRPC API for quantum program translation and controller execution against the QPU.
+- [Rigetti Book QPU Reservation](https://apis.io/arazzos/rigetti/rigetti-book-qpu-reservation-workflow/)
+- [Rigetti Cancel Reservation](https://apis.io/arazzos/rigetti/rigetti-cancel-reservation-workflow/)
+- [Rigetti Create Execution Engagement](https://apis.io/arazzos/rigetti/rigetti-create-execution-engagement-workflow/)
+- [Rigetti Discover Quantum Processor](https://apis.io/arazzos/rigetti/rigetti-discover-quantum-processor-workflow/)
+- [Rigetti Provision Endpoint and Engage](https://apis.io/arazzos/rigetti/rigetti-provision-endpoint-and-engage-workflow/)
+- [Rigetti Reservation Readiness Check](https://apis.io/arazzos/rigetti/rigetti-reservation-readiness-check-workflow/)
 
-- **Human URL:** [https://docs.api.qcs.rigetti.com/](https://docs.api.qcs.rigetti.com/)
-- **Base URL:** `https://api.qcs.rigetti.com`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Quantum Computing
-- Quantum Cloud Services
-- QCS
-- Account Management
-- QPU Access
-- Reservations
-- Billing
+- [Rigetti Agentic Access](https://apis.io/agentic-access/rigetti/rigetti-agentic-access/)
 
-#### Properties
+#### JSON Schema (2)
 
-- [Documentation](https://docs.api.qcs.rigetti.com/)
-- [Documentation](https://docs.rigetti.com/qcs/references/qcs-api)
-- [Documentation](https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api)
-- [OpenAPI](openapi/rigetti-qcs-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/rigetti-qcs-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/rigetti-qcs-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/rigetti-quantum-processor-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/rigetti-reservation-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/rigetti-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [SDK](https://github.com/rigetti/qcs-api-client-rust)
-- [SDK](https://github.com/rigetti/qcs-api-client-python)
+The data models the API reads and writes.
 
-### Rigetti QCS Translation Service (gRPC)
+- [Rigetti Quantum Processor](https://apis.io/schemas/rigetti/rigetti-quantum-processor/)
+- [Rigetti QCS Reservation](https://apis.io/schemas/rigetti/rigetti-reservation/)
 
-gRPC Translation service that compiles native Quil programs into encrypted Controller Jobs for execution on a Rigetti QPU. Operations include TranslateQuilToEncryptedControllerJob and GetQuantumProcessorQuilCalibrationProgram. Authenticated with the same JWT bearer token used by the QCS HTTP API and consumed via qcs-sdk-rust/qcs-sdk-python or the Rust qcs-api-client-grpc crate.
+#### JSON-LD (1)
 
-- **Human URL:** [https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api](https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api)
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Rigetti Context](https://apis.io/jsonld/rigetti/rigetti-context/)
 
-- Quantum Computing
-- QCS
-- Translation
-- Compilation
-- Quil
-- gRPC
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Documentation](https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api)
-- [Protocol Buffers](https://github.com/rigetti/qcs-api-client-rust/tree/main/qcs-api-client-grpc/proto/translation)
-- [SDK](https://github.com/rigetti/qcs-api-client-rust)
-- [Postman Collection](collections/rigetti-qcs-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/rigetti-qcs-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Rigetti Vocabulary](https://apis.io/vocabularies/rigetti/rigetti-vocabulary/)
 
-### Rigetti QCS Controller Service (gRPC)
+#### Collections (11)
 
-gRPC Controller service that executes encrypted Controller Jobs on a Rigetti QPU endpoint and returns measurement (readout) results. Operations include ExecuteControllerJob, BatchExecuteControllerJobs, GetControllerJobResults, CancelControllerJobs, and GetControllerJobStatus. Used through qcs-sdk-rust / qcs-sdk-python after obtaining a CreateEngagement token from the QCS HTTP API.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api](https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api)
+- [Rigetti QCS account API](https://apis.io/collections/rigetti/open-rigetti-account-api/)
+- [Rigetti QCS account authentication API](https://apis.io/collections/rigetti/open-rigetti-authentication-api/)
+- [Rigetti QCS account clientApplications API](https://apis.io/collections/rigetti/open-rigetti-clientapplications-api/)
+- [Rigetti QCS account endpoints API](https://apis.io/collections/rigetti/open-rigetti-endpoints-api/)
+- [Rigetti QCS account engagements API](https://apis.io/collections/rigetti/open-rigetti-engagements-api/)
+- [Rigetti QCS account Healthcheck API](https://apis.io/collections/rigetti/open-rigetti-healthcheck-api/)
+- [Rigetti QCS API](https://apis.io/collections/rigetti/open-rigetti-qcs-api/)
+- [Rigetti QCS account quantumProcessors API](https://apis.io/collections/rigetti/open-rigetti-quantumprocessors-api/)
+- [Rigetti QCS account reservations API](https://apis.io/collections/rigetti/open-rigetti-reservations-api/)
+- [Rigetti QCS account Rigetti QCS API API](https://apis.io/collections/rigetti/open-rigetti-rigetti-qcs-api-api/)
+- [Rigetti QCS API](https://apis.io/collections/rigetti/postman-rigetti-qcs-api/)
 
-#### Tags
+#### Governance rules (1)
 
-- Quantum Computing
-- QCS
-- Execution
-- Controller
-- Jobs
-- gRPC
+Spectral rulesets for the provider's contracts.
 
-#### Properties
+- [Rigetti Computing — jsonschema rules](https://apis.io/rules/rigetti/rigetti-jsonschema-spectral-rules/)
 
-- [Documentation](https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api)
-- [Protocol Buffers](https://github.com/rigetti/qcs-api-client-rust/tree/main/qcs-api-client-grpc/proto/controller)
-- [SDK](https://github.com/rigetti/qcs-api-client-rust)
-- [Postman Collection](collections/rigetti-qcs-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/rigetti-qcs-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Security (2)
 
-## Common Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
-- [Portal](https://www.rigetti.com)
-- [Sign Up](https://qcs.rigetti.com/)
+- [Rigetti Authentication](https://apis.io/security/rigetti/rigetti-authentication/)
+- [Rigetti Domain Security](https://apis.io/security/rigetti/rigetti-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Rigetti Plans Pricing](https://apis.io/plans/rigetti/rigetti-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Rigetti Rate Limits](https://apis.io/rate-limits/rigetti/rigetti-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Rigetti Finops](https://apis.io/finops/rigetti/rigetti-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.rigetti.com/)
 - [Documentation](https://docs.rigetti.com/qcs)
-- [Getting Started](https://docs.rigetti.com/qcs/getting-started/installation-and-setup)
-- [Documentation](https://docs.rigetti.com/qcs/guides/the-rigetti-qcs-api)
-- [Documentation](https://docs.api.qcs.rigetti.com/)
-- [Authentication](https://qcs.rigetti.com/auth/token)
+- [Getting started](https://docs.rigetti.com/qcs/getting-started/installation-and-setup)
 - [Pricing](https://www.rigetti.com/qcs)
-- [Pricing](https://www.rigetti.com/novera)
-- [Pricing](https://www.rigetti.com/foundry)
-- [Support](mailto:support@rigetti.com)
 - [Support](https://rigetti.zendesk.com)
-- [Status Page](https://docs.rigetti.com/qcs/troubleshooting)
 - [Blog](https://www.rigetti.com/blog)
-- [Press](https://investors.rigetti.com/news-events/news-releases)
-- [GitHub Organization](https://github.com/rigetti)
-- [SDK](https://github.com/rigetti/pyquil)
-- [SDK](https://github.com/rigetti/qcs-sdk-rust)
-- [SDK](https://github.com/rigetti/qcs-sdk-rust/tree/main/crates/python)
-- [SDK](https://github.com/rigetti/qcs-sdk-c)
-- [SDK](https://github.com/rigetti/qcs-api-client-rust)
-- [SDK](https://github.com/rigetti/qcs-api-client-python)
-- [SDK](https://github.com/rigetti/quil-rs)
-- [SDK](https://github.com/rigetti/qiskit-rigetti)
-- [SDK](https://github.com/rigetti/pyquil-for-azure-quantum)
-- [SDK](https://github.com/rigetti/qcs-sdk-qir)
-- [Tool](https://github.com/rigetti/qcs-cli)
-- [Tool](https://github.com/rigetti/quilc)
-- [Tool](https://github.com/rigetti/qvm)
-- [Tool](https://github.com/rigetti/rpcq)
-- [Tool](https://github.com/rigetti/rigetti-resource-estimation)
-- [Code Examples](https://github.com/rigetti/forest-tutorials)
-- [Code Examples](https://github.com/rigetti/grove)
-- [Code Examples](https://github.com/rigetti/forest-benchmarking)
-- [Code Examples](https://github.com/rigetti/qcs-paper)
-- [Integrations](https://aws.amazon.com/braket/)
-- [Integrations](https://azure.microsoft.com/en-us/products/quantum)
-- [Integrations](https://quantumai.google/cirq/hardware/rigetti)
-- [Protocol Buffers](https://github.com/rigetti/qcs-api-client-rust/tree/main/qcs-api-client-grpc/proto)
-- [Specification](https://github.com/quil-lang/quil)
-- [Documentation](https://pyquil.readthedocs.io)
-- [Documentation](https://docs.rs/qcs)
-- [Privacy Policy](https://www.rigetti.com/privacy-policy)
-- [Terms of Service](https://www.rigetti.com/terms-of-service)
-- [Plans](plans/rigetti-plans-pricing.yml)
-- [Rate Limits](rate-limits/rigetti-rate-limits.yml)
-- [Fin Ops](finops/rigetti-finops.yml)
-- [Vocabulary](vocabulary/rigetti-vocabulary.yml)
-- [JSON-LD](json-ld/rigetti-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Solutions](undefined)
+- [Terms of service](https://www.rigetti.com/terms-of-service)
+- [Privacy policy](https://www.rigetti.com/privacy-policy)
+- [GitHub](https://github.com/rigetti)
+- [Status](https://docs.rigetti.com/qcs/troubleshooting)
+
+## API Evangelist rating
+
+**Kin Score 46.6** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 52.7 |
+| Contract quality | 65.2 |
+| Contract governance | 23.5 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 53.6 |
+| Access clarity | 50.0 |
+
+**Agent readiness 30.8** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | verified |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 20.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/rigetti/](https://apis.io/providers/rigetti/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Rigetti Computing: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/rigetti/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
